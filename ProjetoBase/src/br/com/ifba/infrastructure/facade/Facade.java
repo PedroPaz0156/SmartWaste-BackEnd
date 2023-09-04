@@ -1,9 +1,9 @@
 package br.com.ifba.infrastructure.facade;
 
-import br.com.ifba.usuario.model.Administrador;
-import br.com.ifba.usuario.service.AdminService;
+import br.com.ifba.usuario.model.Usuario;
+import br.com.ifba.usuario.service.IUsuarioService;
+import br.com.ifba.usuario.service.UsuarioService;
 import java.util.List;
-import br.com.ifba.usuario.service.IAdminService;
 
 
 public class Facade implements IFacade {
@@ -38,36 +38,36 @@ public class Facade implements IFacade {
 
     
     //USUARIO
-    private final IAdminService usuarioService = new AdminService();
+    private final IUsuarioService usuarioService = new UsuarioService();
 
     
     @Override
-    public Administrador saveUsuario(Administrador admin) {
-        return usuarioService.saveAdmin(admin);
+    public Usuario saveUsuario(Usuario usuario) {
+        return usuarioService.saveUsuario(usuario);
     }
 
     @Override
-    public void deleteUsuario(Administrador admin) {
-        usuarioService.deleteAdmin(admin);
+    public void deleteUsuario(Usuario usuario) {
+        usuarioService.deleteUsuario(usuario);
     }
 
     @Override
-    public Administrador updateUsuario(Administrador admin) {
-        return usuarioService.updateAdmin(admin);
+    public Usuario updateUsuario(Usuario usuario) {
+        return usuarioService.updateUsuario(usuario);
     }
 
     @Override
-    public List<Administrador> findAllUsuario() {
-        return usuarioService.findAllAdmin();
+    public List<Usuario> findAllUsuario() {
+        return usuarioService.findAllUsuario();
     }
 
     @Override
     public boolean checkLoginUsuario(String username, String password) {
-        return usuarioService.checkLoginAdmin(username, password);
+        return usuarioService.checkLoginUsuario(username, password);
     }
 
     @Override
-    public boolean findByUsernameAdmin(String username) {
+    public boolean findByUsernameUsuario(String username) {
         return usuarioService.findByUsername(username);
     }
     
