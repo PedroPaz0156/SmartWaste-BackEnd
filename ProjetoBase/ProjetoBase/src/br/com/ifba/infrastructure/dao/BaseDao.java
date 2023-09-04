@@ -14,7 +14,7 @@ public class BaseDao<Entity extends PersistenceEntity> implements IBaseDao<Entit
     protected static EntityManager entityManager;
     
     static{
-        EntityManagerFactory fac = Persistence.createEntityManagerFactory("bd_test");
+        EntityManagerFactory fac = Persistence.createEntityManagerFactory("smartwaste");
         entityManager = fac.createEntityManager();
     }
     
