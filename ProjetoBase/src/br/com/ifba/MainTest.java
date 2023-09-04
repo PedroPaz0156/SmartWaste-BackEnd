@@ -1,7 +1,7 @@
 package br.com.ifba;
 
 import br.com.ifba.infrastructure.facade.FacadeInstance;
-import br.com.ifba.usuario.model.Administrador;
+import br.com.ifba.usuario.model.Usuario;
 
 public class MainTest {
 
@@ -12,7 +12,7 @@ public class MainTest {
 //            System.out.println(p.getNome());
 //        }   
 //        
-        Administrador usuario = new Administrador("admin", "admin");
+        Usuario usuario = new Usuario("admin", "admin");
         if(FacadeInstance.getInstance().checkLoginUsuario("admin", "admin")){
             System.out.println("Login Ok");
             System.out.println("Login: " + usuario.getLogin());
