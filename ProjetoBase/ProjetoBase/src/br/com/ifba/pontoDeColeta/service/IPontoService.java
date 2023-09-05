@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package br.com.ifba.usuario.service;
+package br.com.ifba.pontoDeColeta.service;
 
-import br.com.ifba.usuario.model.PontoDeColeta;
+import br.com.ifba.pontoDeColeta.model.PontoDeColeta;
 import java.util.List;
 
 /**

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.com.ifba.usuario.model;
+package br.com.ifba.sensor.model;
 
 import br.com.ifba.infrastructure.model.PersistenceEntity;
 import javax.persistence.Entity;
@@ -18,8 +18,9 @@ import javax.persistence.Table;
 public class Sensor extends PersistenceEntity{
    
     private float distanciaAtual;
+    private int id;
 
-    public Sensor(float distanciaAtual) {
+    public Sensor(float distanciaAtual, int id) {
         this.distanciaAtual = distanciaAtual;
     }
     
@@ -27,6 +28,16 @@ public class Sensor extends PersistenceEntity{
         return distanciaAtual;
     }
 
+    //tem um erro aqui ó
+    //public int getId() {
+    //    return id;
+    //}
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    
     public void setDistanciaAtual(float distanciaAtual) {
         this.distanciaAtual = distanciaAtual;
     }
