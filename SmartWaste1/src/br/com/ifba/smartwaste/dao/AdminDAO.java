@@ -1,0 +1,193 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package br.com.ifba.smartwaste.dao;
+
+import br.com.ifba.infrastructure.util.Session;
+import br.com.ifba.smartwaste.model.Administrador;
+import br.com.ifba.smartwaste.model.Conexao;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+/**
+ *
+ * @author Pedro Augusto
+ */
+public class AdminDAO implements IAdminDAO{
+
+    @Override
+    public Administrador cadastrarAdmin(Administrador admin) {
+        String sql = "INSERT INTO administrador (nome,email,cpf,senha) VALUES (?,?,?,?)";
+        
+            PreparedStatement pst;
+            ResultSet rs;
+            
+            try {                
+                pst = Conexao.getConexao().prepareStatement(sql);
+                pst.setString(1, admin.getNome());
+                pst.setString(2, admin.getEmail());
+                pst.setString(3, admin.getCpf());
+                pst.setString(4, admin.getSenha());
+                pst.execute();
+                pst.close();
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            } 
+            return admin;
+    }
+
+    @Override
+    public boolean deletarAdmin(Administrador admin) {
+        String sql = "DELETE FROM administrador WHERE cpf = ?";
+        
+        PreparedStatement pst;
+        
+        try {
+            pst = Conexao.getConexao().prepareStatement(sql);
+            pst.setString(1, admin.getCpf());
+            pst.execute();
+            pst.close();                
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            return false;
+        }
+        
+        return true;
+    }
+
+    @Override
+    public void alterarAdmin(Administrador admin) {
+        String sql = "UPDATE administrador SET nome = ? , email = ?, cpf = ?, senha = ?";
+        
+        PreparedStatement pst;
+        try {
+            pst = Conexao.getConexao().prepareStatement(sql);
+            pst.setString(1, admin.getNome());
+            pst.setString(2, admin.getEmail());
+            pst.setString(3, admin.getCpf());
+            pst.setString(4, admin.getSenha());
+            pst.execute();
+            pst.close();                
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    @Override
+    public Administrador procurarAdm(String nome) {
+        String sql = "SELECT * FROM administrador WHERE nome LIKE ? ORDER BY nome,cpf";
+        
+        ArrayList<Administrador> lista = new ArrayList<>();
+        
+        PreparedStatement pst;
+        ResultSet rs;
+        
+        Administrador admin = new Administrador();
+        try {
+            pst = Conexao.getConexao().prepareStatement(sql);
+            pst.setString(1, "%" + nome + "%");
+            rs = pst.executeQuery();
+            
+            while(rs.next()){
+                
+                admin.setNome(rs.getString("nome"));
+                admin.setCpf(rs.getString("cpf"));
+                admin.setEmail(rs.getString("email"));
+                admin.setSenha(rs.getString("senha"));
+                lista.add(admin);
+            }
+            
+            rs.close();
+            pst.close();
+            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        
+        return admin;
+    }
+
+    @Override
+    public Administrador acesso(String nome, String password) {
+        String sql = "SELECT * FROM administrador WHERE nome = ? AND senha = md5(?)";
+        Administrador admin = new Administrador();
+        
+        PreparedStatement pst;
+        ResultSet st;
+        
+        try{
+            pst = Conexao.getConexao().prepareStatement(sql);
+            pst.setString(1, nome);
+            pst.setString(2, password);
+            st = pst.executeQuery();
+            
+            while (st.next()) {
+                admin.setCpf(st.getString("cpf"));
+                admin.setNome(st.getString("nome"));
+                admin.setEmail(st.getString("email"));
+                admin.setSenha(st.getString("senha"));
+            }
+            
+            st.close();
+            pst.close();
+            
+        }catch(SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+        
+        return admin;
+    }
+
+    @Override
+    public ArrayList<Administrador> findByEmail(String email) {
+        String sql = "SELECT * FROM administrador WHERE email LIKE ? ORDER BY email,nome";
+        
+        ArrayList<Administrador> lista = new ArrayList<>();
+        
+        PreparedStatement pst;
+        ResultSet rs;
+        
+        try {
+            pst = Conexao.getConexao().prepareStatement(sql);
+            pst.setString(1, "%" + email + "%");
+            rs = pst.executeQuery();
+            
+            while(rs.next()){
+                Administrador admin = new Administrador();
+                admin.setEmail(rs.getString("email"));
+                admin.setNome(rs.getString("nome"));
+                admin.setCpf(rs.getString("cpf"));
+                admin.setSenha(rs.getString("senha"));
+                lista.add(admin);
+            }
+            
+            rs.close();
+            pst.close();
+            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        
+        return lista;
+    }
+
+    @Override
+    public void alterarSenha(Administrador admin) {
+        String sql = "UPDATE administrador SET senha = md5(?) WHERE email LIKE ?";
+        
+        PreparedStatement pst;
+        try{
+            pst = Conexao.getConexao().prepareStatement(sql);
+            pst.setString(1, admin.getSenha());
+            pst.setString(2, admin.getEmail());
+            pst.execute();
+            pst.close();
+        }catch(SQLException ex){
+            System.out.println(ex);
+        }
+    }
+    
+}
