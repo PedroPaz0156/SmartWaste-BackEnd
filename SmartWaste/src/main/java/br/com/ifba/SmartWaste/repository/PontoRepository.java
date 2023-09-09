@@ -16,18 +16,21 @@ import java.util.List;
 public interface PontoRepository extends CrudRepository<PontoDeColeta, Integer>{
     
     //listar todos
+    @Override
     public List<PontoDeColeta> findAll();
 
     //buscar por colunas
-    public PontoDeColeta findById(int id);
+    public PontoDeColeta findByIdPonto(int id);
     public PontoDeColeta findByEndereco(String endereco);
     public PontoDeColeta findByUltimaColeta(String ultimaColeta);
     public PontoDeColeta findByOcupacaoMedia(String ocupacaoMedia);
     
 
     //deletar
+    @Override
     void delete(PontoDeColeta ponto);
     
     //salvar
+    @Override
     <Ponto extends PontoDeColeta> Ponto save(Ponto ponto);
 }

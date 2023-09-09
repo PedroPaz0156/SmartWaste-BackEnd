@@ -17,18 +17,21 @@ import java.util.List;
 public interface AdminRepository extends CrudRepository<Administrador, Integer>{
 
     //listar todos
+    @Override
     public List<Administrador> findAll();
     
     //buscar por colunas
-    public Administrador findById(int id);
+    public Administrador findByIdAdmin(int id);
     public Administrador findByEmail(String email);
     public Administrador findByCpf(String cpf);
     public Administrador findByNome(String nome);
     
     //deletar
+    @Override
     void delete(Administrador adm);
     
     //salvar
+    @Override
     <Adm extends Administrador> Adm save(Adm adm);
     
 }
