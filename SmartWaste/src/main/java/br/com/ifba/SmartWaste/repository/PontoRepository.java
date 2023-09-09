@@ -7,7 +7,7 @@ package br.com.ifba.SmartWaste.repository;
 import br.com.ifba.SmartWaste.model.PontoDeColeta;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
+import java.util.List;
 /**
  *
  * @author Pedro Augusto
@@ -15,4 +15,19 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PontoRepository extends CrudRepository<PontoDeColeta, Integer>{
     
+    //listar todos
+    public List<PontoDeColeta> findAll();
+
+    //buscar por colunas
+    public PontoDeColeta findById(int id);
+    public PontoDeColeta findByEndereco(String endereco);
+    public PontoDeColeta findByUltimaColeta(String ultimaColeta);
+    public PontoDeColeta findByOcupacaoMedia(String ocupacaoMedia);
+    
+
+    //deletar
+    void delete(PontoDeColeta ponto);
+    
+    //salvar
+    <Ponto extends PontoDeColeta> Ponto save(Ponto ponto);
 }
