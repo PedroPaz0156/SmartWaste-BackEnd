@@ -10,7 +10,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  *
@@ -20,7 +19,7 @@ public class PontoDAO implements IPontoDAO{
 
     @Override
     public int criarPonto(Ponto ponto) {
-        String sql = "INSERT * INTO ponto (endereco, ultimacoleta, ocupacaomedia, lixeiras) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT * INTO ponto (endereco, ultimacoleta, ocupacaomedia) VALUES (?, ?, ?)";
         
         PreparedStatement pst;
         ResultSet st;
@@ -31,7 +30,6 @@ public class PontoDAO implements IPontoDAO{
             pst.setString(1, ponto.getEndereco());
             pst.setDate(2, (Date) ponto.getUltimaColeta());
             pst.setFloat(3, ponto.getOcupacaoMedia());
-            pst.setInt(4, ponto.getLixeiras());
             pst.execute();
             st = pst.getGeneratedKeys();
             
@@ -55,7 +53,6 @@ public class PontoDAO implements IPontoDAO{
             pst.setString(1, ponto.getEndereco());
             pst.setDate(2, (Date) ponto.getUltimaColeta());
             pst.setFloat(3, ponto.getOcupacaoMedia());
-            pst.setInt(4, ponto.getLixeiras());
             pst.setInt(5, ponto.getIdPonto());
             pst.execute();
             pst.close();
@@ -100,8 +97,7 @@ public class PontoDAO implements IPontoDAO{
                 ponto.setIdPonto(rs.getInt("id"));
                 ponto.setEndereco(rs.getString("Endereco"));
                 ponto.setOcupacaoMedia(rs.getFloat("ocupacaomedia"));                
-                ponto.setUltimaColeta(rs.getDate("ocupacaomedia"));                
-                ponto.setLixeiras(rs.getInt("lixeiras"));                
+                ponto.setUltimaColeta(rs.getDate("ultimacoleta"));                
             }
             
             rs.close();
@@ -132,8 +128,7 @@ public class PontoDAO implements IPontoDAO{
                 ponto.setIdPonto(rs.getInt("id"));
                 ponto.setEndereco(rs.getString("Endereco"));
                 ponto.setOcupacaoMedia(rs.getFloat("ocupacaomedia"));                
-                ponto.setUltimaColeta(rs.getDate("ocupacaomedia"));                
-                ponto.setLixeiras(rs.getInt("lixeiras"));                
+                ponto.setUltimaColeta(rs.getDate("ultimacoleta"));
             }
             
             rs.close();
