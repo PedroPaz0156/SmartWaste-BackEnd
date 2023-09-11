@@ -77,7 +77,7 @@ public class LixeiraDAO implements ILixeiraDAO{
     }
 
     @Override
-    public void pesquisarLixo(int id) {
+    public Lixeira pesquisarLixo(int id) {
         String sql = "SELECT * FROM lixeira WHERE id = ?";
         
         Lixeira lixeira = new Lixeira();
@@ -103,6 +103,7 @@ public class LixeiraDAO implements ILixeiraDAO{
         } catch (SQLException ex) {
             System.out.println(ex);
         }
+        return lixeira;
     }
     
 }

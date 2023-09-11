@@ -30,7 +30,7 @@ public class PontoDAO implements IPontoDAO{
             pst.setString(1, ponto.getEndereco());
             pst.setDate(2, (Date) ponto.getUltimaColeta());
             pst.setFloat(3, ponto.getOcupacaoMedia());
-            pst.setInt(4, ponto.getLixeiras());
+            pst.setInt(4, ponto.getIdLixeira());
             pst.execute();
             st = pst.getGeneratedKeys();
             
@@ -54,7 +54,7 @@ public class PontoDAO implements IPontoDAO{
             pst.setString(1, ponto.getEndereco());
             pst.setDate(2, (Date) ponto.getUltimaColeta());
             pst.setFloat(3, ponto.getOcupacaoMedia());
-            pst.setInt(4, ponto.getLixeiras());
+            pst.setInt(4, ponto.getIdLixeira());
             pst.setInt(5, ponto.getIdPonto());
             pst.execute();
             pst.close();
@@ -100,7 +100,7 @@ public class PontoDAO implements IPontoDAO{
                 ponto.setEndereco(rs.getString("Endereco"));
                 ponto.setOcupacaoMedia(rs.getFloat("ocupacaomedia"));                
                 ponto.setUltimaColeta(rs.getDate("ocupacaomedia"));                
-                ponto.setLixeiras(rs.getInt("lixeiras"));                
+                ponto.setIdLixeira(rs.getInt("lixeiras"));                
             }
             
             rs.close();
@@ -132,7 +132,7 @@ public class PontoDAO implements IPontoDAO{
                 ponto.setEndereco(rs.getString("Endereco"));
                 ponto.setOcupacaoMedia(rs.getFloat("ocupacaomedia"));                
                 ponto.setUltimaColeta(rs.getDate("ocupacaomedia"));                
-                ponto.setLixeiras(rs.getInt("lixeiras"));                
+                ponto.setIdLixeira(rs.getInt("lixeiras"));                
             }
             
             rs.close();

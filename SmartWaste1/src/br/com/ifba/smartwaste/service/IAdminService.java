@@ -16,7 +16,7 @@ public interface IAdminService {
     public Administrador cadastrarAdministrador();
     public void apagarAdministrador(String nome);
     public void atualizarAdministrador(String nome, String email, String cpf, String senha);
-    public boolean acessarAdmin();
+    public void acessarAdmin();
     public boolean findByName(String name);
     public boolean findByEmail(String email);
     public void abrirTelaCadastro();

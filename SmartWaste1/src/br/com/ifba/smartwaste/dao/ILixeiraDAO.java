@@ -15,5 +15,5 @@ public interface ILixeiraDAO {
     public int criarLixeira(Lixeira lixeira);
     public void atualizarLixeira(Lixeira lixeira);
     public void deletarLixeira(Lixeira lixeira);
-    public void pesquisarLixo(int id);
+    public Lixeira pesquisarLixo(int id);
 }

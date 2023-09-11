@@ -19,6 +19,6 @@ public interface IAdminDAO {
     public void alterarSenha(Administrador admin);
     public Administrador procurarAdm(String nome);
     public Administrador acesso(String nome, String password);
-    public ArrayList<Administrador> findByEmail(String email);
+    public Administrador findByEmail(String email);
     
 }

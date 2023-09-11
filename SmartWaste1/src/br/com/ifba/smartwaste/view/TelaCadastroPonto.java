@@ -4,6 +4,7 @@
  */
 package br.com.ifba.smartwaste.view;
 
+import java.awt.Frame;
 import javax.swing.JButton;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
@@ -18,7 +19,7 @@ public class TelaCadastroPonto extends javax.swing.JDialog {
     /**
      * Creates new form TelaCadastroPonto
      */
-    public TelaCadastroPonto(java.awt.Frame parent, boolean modal) {
+    public TelaCadastroPonto(Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setResizable(false);

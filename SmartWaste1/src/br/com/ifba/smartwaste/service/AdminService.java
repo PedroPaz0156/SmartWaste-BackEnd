@@ -5,10 +5,12 @@
 package br.com.ifba.smartwaste.service;
 
 import br.com.ifba.infrastructure.util.Session;
+import br.com.ifba.smartwaste.controller.PrincipalController;
 import br.com.ifba.smartwaste.dao.AdminDAO;
 import br.com.ifba.smartwaste.model.Administrador;
 import br.com.ifba.smartwaste.view.TelaCadastroAdmin;
 import br.com.ifba.smartwaste.view.TelaLogin;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -54,17 +56,15 @@ public class AdminService implements IAdminService{
     }
 
     @Override
-    public boolean acessarAdmin() {
+    public void acessarAdmin() {
+        admin = adminDAO.acesso(telaLogin.getTxtNome().getText(), telaLogin.getTxtSenha().getText());
+
         if(!telaLogin.getTxtNome().getText().isEmpty()) {
-            if(!telaLogin.getTxtSenha().getText().isEmpty()) {
-                admin = adminDAO.acesso(telaLogin.getTxtNome().getText(), telaLogin.getTxtSenha().getText());
-                Session.setUserName(admin.getNome());
-                return true;
-            }else{
-                return false;
-            }
+            Session.setUserName(admin.getNome());
+            this.telaLogin.dispose();
+            PrincipalController pc = new PrincipalController();
         }else{
-            return false;
+            JOptionPane.showMessageDialog(telaLogin, "Usuário e/ou senha incorreto(s)","Acesso Negado", 0);
         }
     }
 

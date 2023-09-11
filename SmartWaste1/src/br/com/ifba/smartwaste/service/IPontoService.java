@@ -13,7 +13,7 @@ import br.com.ifba.smartwaste.model.Ponto;
  */
 public interface IPontoService {
     
-    public void cadastrarPonto(String endereco, Lixeira lixeiras);
+    public void cadastrarPonto(String endereco, int lixeiras);
     public void apagarPonto(String endereco);
     public void atualizarPonto(String endereco);
     public boolean findByEndereco(String endereco);

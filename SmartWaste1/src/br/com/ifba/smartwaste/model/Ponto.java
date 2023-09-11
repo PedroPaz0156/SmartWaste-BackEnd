@@ -17,7 +17,8 @@ public class Ponto{
     private String endereco;
     private Date ultimaColeta;
     private float ocupacaoMedia;
-    private int lixeiras;
+    private int idLixeira;
+    private Lixeira lixeiras;
 
     public int getIdPonto() {
         return idPonto;
@@ -51,12 +52,21 @@ public class Ponto{
         this.ocupacaoMedia = ocupacaoMedia;
     }
 
-    public int getLixeiras() {
+    public int getIdLixeira() {
+        return idLixeira;
+    }
+
+    public void setIdLixeira(int idLixeira) {
+        this.idLixeira = idLixeira;
+    }
+
+    public Lixeira getLixeiras() {
         return lixeiras;
     }
 
-    public void setLixeiras(int lixeiras) {
+    public void setLixeiras(Lixeira lixeiras) {
         this.lixeiras = lixeiras;
     }
+
 
 }

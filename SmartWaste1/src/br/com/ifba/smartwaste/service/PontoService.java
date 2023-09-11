@@ -4,6 +4,7 @@
  */
 package br.com.ifba.smartwaste.service;
 
+import br.com.ifba.smartwaste.dao.LixeiraDAO;
 import br.com.ifba.smartwaste.dao.PontoDAO;
 import br.com.ifba.smartwaste.model.Lixeira;
 import br.com.ifba.smartwaste.model.Ponto;
@@ -15,12 +16,13 @@ import br.com.ifba.smartwaste.model.Ponto;
 public class PontoService implements IPontoService{
 
     private final PontoDAO pontoDAO = new PontoDAO();
+    private final LixeiraDAO lixeiraDAO = new LixeiraDAO();
     private Ponto ponto;
     
     @Override
-    public void cadastrarPonto(String endereco, Lixeira lixeiras) {
+    public void cadastrarPonto(String endereco, int lixeiras) {
         this.ponto.setEndereco(endereco);
-        /*ponto.setLixeiras(lixeiras);*/
+        this.ponto.setLixeiras(this.lixeiraDAO.pesquisarLixo(lixeiras));
         pontoDAO.criarPonto(ponto);
     }
 

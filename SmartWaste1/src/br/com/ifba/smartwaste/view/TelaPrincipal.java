@@ -25,10 +25,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         return btnAlterar;
     }
 
-    public JButton getBtnLista() {
-        return btnLista;
-    }
-
     public JButton getBtnNovo() {
         return btnNovo;
     }
@@ -56,7 +52,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnNovo = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
-        btnLista = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -100,19 +95,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jPanel2.add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 160, -1));
 
-        btnLista.setBackground(new java.awt.Color(77, 166, 96));
-        btnLista.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnLista.setForeground(new java.awt.Color(255, 255, 255));
-        btnLista.setText("Lista de pontos");
-        btnLista.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnLista.setContentAreaFilled(false);
-        btnLista.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListaActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
-
         btnRemover.setBackground(new java.awt.Color(77, 166, 96));
         btnRemover.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btnRemover.setForeground(new java.awt.Color(255, 255, 255));
@@ -136,10 +118,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAlterarActionPerformed
-
-    private void btnListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnListaActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // TODO add your handling code here:
@@ -186,7 +164,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
-    private javax.swing.JButton btnLista;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnRemover;
     private javax.swing.JButton btnSair;

@@ -142,26 +142,23 @@ public class AdminDAO implements IAdminDAO{
     }
 
     @Override
-    public ArrayList<Administrador> findByEmail(String email) {
+    public Administrador findByEmail(String email) {
         String sql = "SELECT * FROM administrador WHERE email LIKE ? ORDER BY email,nome";
-        
-        ArrayList<Administrador> lista = new ArrayList<>();
         
         PreparedStatement pst;
         ResultSet rs;
         
+        Administrador admin = new Administrador();
         try {
             pst = Conexao.getConexao().prepareStatement(sql);
             pst.setString(1, "%" + email + "%");
             rs = pst.executeQuery();
             
             while(rs.next()){
-                Administrador admin = new Administrador();
                 admin.setEmail(rs.getString("email"));
                 admin.setNome(rs.getString("nome"));
                 admin.setCpf(rs.getString("cpf"));
                 admin.setSenha(rs.getString("senha"));
-                lista.add(admin);
             }
             
             rs.close();
@@ -171,7 +168,7 @@ public class AdminDAO implements IAdminDAO{
             System.out.println(ex);
         }
         
-        return lista;
+        return admin;
     }
 
     @Override
