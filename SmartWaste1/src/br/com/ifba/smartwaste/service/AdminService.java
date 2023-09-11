@@ -7,7 +7,8 @@ package br.com.ifba.smartwaste.service;
 import br.com.ifba.infrastructure.util.Session;
 import br.com.ifba.smartwaste.dao.AdminDAO;
 import br.com.ifba.smartwaste.model.Administrador;
-import br.com.ifba.smartwaste.view.TelaCadastro;
+import br.com.ifba.smartwaste.view.TelaCadastroAdmin;
+import br.com.ifba.smartwaste.view.TelaLogin;
 
 /**
  *
@@ -15,18 +16,20 @@ import br.com.ifba.smartwaste.view.TelaCadastro;
  */
 public class AdminService implements IAdminService{
 
-    public AdminService(TelaCadastro telaCadastro) {
+    public AdminService(TelaCadastroAdmin telaCadastro, TelaLogin telaLogin) {
         this.telaCadastro = telaCadastro;
+        this.telaLogin = telaLogin;
+        this.admin = new Administrador();
     }
 
     private final AdminDAO adminDAO = new AdminDAO();
     private Administrador admin;
     
-    private final TelaCadastro telaCadastro;
+    private final TelaCadastroAdmin telaCadastro;
+    private final TelaLogin telaLogin;
     
     @Override
     public Administrador cadastrarAdministrador() {
-        this.admin = new Administrador();
         this.admin.setNome(this.telaCadastro.getTxtNome().getText());
         this.admin.setEmail(this.telaCadastro.getTxtEmail().getText());
         this.admin.setCpf(this.telaCadastro.getTxtCPF().getText());
@@ -43,7 +46,6 @@ public class AdminService implements IAdminService{
 
     @Override
     public void atualizarAdministrador(String nome, String email, String cpf, String senha) {
-        this.admin = new Administrador();
         admin.setNome(nome);
         admin.setEmail(email);
         admin.setCpf(cpf);
@@ -52,11 +54,11 @@ public class AdminService implements IAdminService{
     }
 
     @Override
-    public boolean acessarAdmin(String nome, String senha) {
-        if(!nome.isEmpty()) {
-            if(!senha.isEmpty()) {
-                adminDAO.acesso(nome, senha);
-                Session.setUserName(nome);
+    public boolean acessarAdmin() {
+        if(!telaLogin.getTxtNome().getText().isEmpty()) {
+            if(!telaLogin.getTxtSenha().getText().isEmpty()) {
+                admin = adminDAO.acesso(telaLogin.getTxtNome().getText(), telaLogin.getTxtSenha().getText());
+                Session.setUserName(admin.getNome());
                 return true;
             }else{
                 return false;
@@ -84,6 +86,18 @@ public class AdminService implements IAdminService{
         }else{
             return false;
         }
+    }
+
+    @Override
+    public void abrirTelaCadastro() {
+        telaLogin.setVisible(false);
+        telaCadastro.setVisible(true);
+    }
+
+    @Override
+    public void voltar() {
+        telaCadastro.setVisible(false);
+        telaLogin.setVisible(true);
     }
     
 }

@@ -26,8 +26,6 @@ public class Ponto{
     public void setIdPonto(int idPonto) {
         this.idPonto = idPonto;
     }
-
-    
     
     public String getEndereco() {
         return endereco;
