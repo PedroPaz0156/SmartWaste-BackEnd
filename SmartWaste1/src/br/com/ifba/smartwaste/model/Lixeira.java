@@ -17,6 +17,7 @@ public class Lixeira{
     private float tamanho;
     private String tipo;
     private int idSensor;
+    private int idPonto;
 
     public int getIdLixeira() {
         return idLixeira;
@@ -26,8 +27,6 @@ public class Lixeira{
         this.idLixeira = idLixeira;
     }
 
-    
-    
     public float getMedida() {
         return medida;
     }
@@ -67,9 +66,29 @@ public class Lixeira{
     public void setIdSensor(int idSensor) {
         this.idSensor = idSensor;
     }
+
+    public int getIdPonto() {
+        return idPonto;
+    }
+
+    public void setIdPonto(int idPonto) {
+        this.idPonto = idPonto;
+    }
     
+    //retorna um valor igual a porcentagem de espaço ocupado
     public float calcOcupacao(float tamanho, float medida) {
-        return ocupacao;
+        return 100*(tamanho-medida)/tamanho;
+    }
+
+    public Lixeira(float tamanho, String tipo, int idSensor, int idPonto) {
+        this.tamanho = tamanho;
+        this.tipo = tipo;
+        this.idSensor = idSensor;
+        this.idPonto = idPonto;
+    }
+    
+    public Lixeira(){
+    
     }
     
 }

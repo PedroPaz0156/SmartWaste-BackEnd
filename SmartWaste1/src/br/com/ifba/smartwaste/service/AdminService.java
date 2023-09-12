@@ -18,25 +18,33 @@ import javax.swing.JOptionPane;
  */
 public class AdminService implements IAdminService{
 
-    public AdminService(TelaCadastroAdmin telaCadastro, TelaLogin telaLogin) {
-        this.telaCadastro = telaCadastro;
+    private TelaCadastroAdmin telaCadastroAdmin;
+    private TelaLogin telaLogin;
+
+    public AdminService(TelaCadastroAdmin telaCadastroAdmin, TelaLogin telaLogin) {
+        this.telaCadastroAdmin = telaCadastroAdmin;
         this.telaLogin = telaLogin;
         this.admin = new Administrador();
     }
+    
 
     private final AdminDAO adminDAO = new AdminDAO();
     private Administrador admin;
     
-    private final TelaCadastroAdmin telaCadastro;
-    private final TelaLogin telaLogin;
+
+        
+    public AdminService(TelaCadastroAdmin telaCadastroAdmin) {
+        this.telaCadastroAdmin = telaCadastroAdmin;
+    }
     
     @Override
-    public Administrador cadastrarAdministrador() {
-        this.admin.setNome(this.telaCadastro.getTxtNome().getText());
-        this.admin.setEmail(this.telaCadastro.getTxtEmail().getText());
-        this.admin.setCpf(this.telaCadastro.getTxtCPF().getText());
-        this.admin.setSenha(this.telaCadastro.getTxtSenha().getText());
-        return adminDAO.cadastrarAdmin(admin);
+    public void cadastrarAdministrador() {
+        this.admin = new Administrador();
+        this.admin.setNome(this.telaCadastroAdmin.getTxtNome().getText());
+        this.admin.setEmail(this.telaCadastroAdmin.getTxtEmail().getText());
+        this.admin.setCpf(this.telaCadastroAdmin.getTxtCPF().getText());
+        this.admin.setSenha(this.telaCadastroAdmin.getTxtSenha().getText());
+        adminDAO.cadastrarAdmin(admin);
     }
 
     @Override
@@ -48,6 +56,7 @@ public class AdminService implements IAdminService{
 
     @Override
     public void atualizarAdministrador(String nome, String email, String cpf, String senha) {
+        this.admin = new Administrador();
         admin.setNome(nome);
         admin.setEmail(email);
         admin.setCpf(cpf);
@@ -63,10 +72,10 @@ public class AdminService implements IAdminService{
             Session.setUserName(admin.getNome());
             this.telaLogin.dispose();
             PrincipalController pc = new PrincipalController();
-        }else{
+            }else{
             JOptionPane.showMessageDialog(telaLogin, "Usuário e/ou senha incorreto(s)","Acesso Negado", 0);
+            }
         }
-    }
 
     @Override
     public boolean findByName(String name) {
@@ -87,16 +96,16 @@ public class AdminService implements IAdminService{
             return false;
         }
     }
-
+    
     @Override
     public void abrirTelaCadastro() {
         telaLogin.setVisible(false);
-        telaCadastro.setVisible(true);
+        telaCadastroAdmin.setVisible(true);
     }
 
     @Override
     public void voltar() {
-        telaCadastro.setVisible(false);
+        telaCadastroAdmin.setVisible(false);
         telaLogin.setVisible(true);
     }
     

@@ -17,8 +17,11 @@ public class Ponto{
     private String endereco;
     private Date ultimaColeta;
     private float ocupacaoMedia;
-    private int idLixeira;
-    private Lixeira lixeiras;
+    private Lixeira metal;
+    private Lixeira organico;
+    private Lixeira papel;
+    private Lixeira plastico;
+    private Lixeira vidro;
 
     public int getIdPonto() {
         return idPonto;
@@ -27,7 +30,7 @@ public class Ponto{
     public void setIdPonto(int idPonto) {
         this.idPonto = idPonto;
     }
-    
+
     public String getEndereco() {
         return endereco;
     }
@@ -52,21 +55,60 @@ public class Ponto{
         this.ocupacaoMedia = ocupacaoMedia;
     }
 
-    public int getIdLixeira() {
-        return idLixeira;
+    public Lixeira getMetal() {
+        return metal;
     }
 
-    public void setIdLixeira(int idLixeira) {
-        this.idLixeira = idLixeira;
+    public void setMetal(Lixeira metal) {
+        this.metal = metal;
     }
 
-    public Lixeira getLixeiras() {
-        return lixeiras;
+    public Lixeira getOrganico() {
+        return organico;
     }
 
-    public void setLixeiras(Lixeira lixeiras) {
-        this.lixeiras = lixeiras;
+    public void setOrganico(Lixeira organico) {
+        this.organico = organico;
     }
 
+    public Lixeira getPapel() {
+        return papel;
+    }
 
+    public void setPapel(Lixeira papel) {
+        this.papel = papel;
+    }
+
+    public Lixeira getPlastico() {
+        return plastico;
+    }
+
+    public void setPlastico(Lixeira plastico) {
+        this.plastico = plastico;
+    }
+
+    public Lixeira getVidro() {
+        return vidro;
+    }
+
+    public void setVidro(Lixeira vidro) {
+        this.vidro = vidro;
+    }
+
+    public Ponto(int idPonto, String endereco, Date ultimaColeta, float ocupacaoMedia, float tamanhoMet, int idSensorMet, float tamanhoOrg, int idSensorOrg, float tamanhoPap, int idSensorPap, float tamanhoPla, int idSensorPla, float tamanhoVid, int idSensorVid) {
+        this.endereco = endereco;
+        this.ultimaColeta = ultimaColeta;
+        this.ocupacaoMedia = ocupacaoMedia;
+        this.metal = new Lixeira(tamanhoMet, "metal", idSensorMet, idPonto);
+        this.organico = new Lixeira(tamanhoOrg, "organico", idSensorOrg, idPonto);
+        this.papel = new Lixeira(tamanhoPap, "papel", idSensorPap, idPonto);
+        this.plastico = new Lixeira(tamanhoPla, "plastico", idSensorPla, idPonto);
+        this.vidro = new Lixeira(tamanhoVid, "vidro", idSensorVid, idPonto);
+    }
+    
+    public Ponto(){
+    
+    }
+    
+    
 }

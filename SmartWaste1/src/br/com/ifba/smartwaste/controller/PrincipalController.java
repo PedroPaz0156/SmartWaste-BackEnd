@@ -4,6 +4,7 @@
  */
 package br.com.ifba.smartwaste.controller;
 
+import br.com.ifba.smartwaste.model.Ponto;
 import br.com.ifba.smartwaste.service.PontoService;
 import br.com.ifba.smartwaste.view.TelaCadastroPonto;
 import br.com.ifba.smartwaste.view.TelaEditarPonto;
@@ -60,6 +61,10 @@ public class PrincipalController implements ActionListener{
             LoginController loginController = new LoginController();
             this.telaPrincipal.dispose();
         }else if(e.getSource().equals(this.telaCadPonto.getBtnCriar())) {
+            Ponto ponto = new Ponto();
+            ponto.setEndereco(this.telaCadPonto.getTxtEndereco().getText());
+            ponto.setUltimaColeta(this.telaCadPonto.getSpnColeta().getValue());
+            
             pontoService.cadastrarPonto(this.telaCadPonto.getTxtEndereco().getText(), (int) this.telaCadPonto.getSpnLixeiras().getValue());
         }else if(e.getSource().equals(this.telaCadPonto.getBtnFechar())) {
             this.telaCadPonto.setVisible(false);

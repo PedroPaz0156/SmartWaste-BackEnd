@@ -4,16 +4,13 @@
  */
 package br.com.ifba.smartwaste.service;
 
-import br.com.ifba.smartwaste.model.Administrador;
-
-
 /**
  *
  * @author Pedro Augusto Martins da Paz Souza
  */
 public interface IAdminService {
     
-    public Administrador cadastrarAdministrador();
+    public void cadastrarAdministrador();
     public void apagarAdministrador(String nome);
     public void atualizarAdministrador(String nome, String email, String cpf, String senha);
     public void acessarAdmin();

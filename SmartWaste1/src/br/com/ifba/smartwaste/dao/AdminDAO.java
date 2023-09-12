@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class AdminDAO implements IAdminDAO{
 
     @Override
-    public Administrador cadastrarAdmin(Administrador admin) {
+    public void cadastrarAdmin(Administrador admin) {
         String sql = "INSERT INTO administrador (nome,email,cpf,senha) VALUES (?,?,?,?)";
         
             PreparedStatement pst;
@@ -36,11 +36,10 @@ public class AdminDAO implements IAdminDAO{
             } catch (SQLException ex) {
                 System.out.println(ex);
             } 
-            return admin;
     }
 
     @Override
-    public boolean deletarAdmin(Administrador admin) {
+    public void deletarAdmin(Administrador admin) {
         String sql = "DELETE FROM administrador WHERE cpf = ?";
         
         PreparedStatement pst;
@@ -52,10 +51,7 @@ public class AdminDAO implements IAdminDAO{
             pst.close();                
         } catch (SQLException ex) {
             System.out.println(ex);
-            return false;
         }
-        
-        return true;
     }
 
     @Override
@@ -142,23 +138,26 @@ public class AdminDAO implements IAdminDAO{
     }
 
     @Override
-    public Administrador findByEmail(String email) {
+    public ArrayList<Administrador> findByEmail(String email) {
         String sql = "SELECT * FROM administrador WHERE email LIKE ? ORDER BY email,nome";
+        
+        ArrayList<Administrador> lista = new ArrayList<>();
         
         PreparedStatement pst;
         ResultSet rs;
         
-        Administrador admin = new Administrador();
         try {
             pst = Conexao.getConexao().prepareStatement(sql);
             pst.setString(1, "%" + email + "%");
             rs = pst.executeQuery();
             
             while(rs.next()){
+                Administrador admin = new Administrador();
                 admin.setEmail(rs.getString("email"));
                 admin.setNome(rs.getString("nome"));
                 admin.setCpf(rs.getString("cpf"));
                 admin.setSenha(rs.getString("senha"));
+                lista.add(admin);
             }
             
             rs.close();
@@ -168,7 +167,7 @@ public class AdminDAO implements IAdminDAO{
             System.out.println(ex);
         }
         
-        return admin;
+        return lista;
     }
 
     @Override

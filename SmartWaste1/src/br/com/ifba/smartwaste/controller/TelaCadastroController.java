@@ -5,7 +5,7 @@
 package br.com.ifba.smartwaste.controller;
 
 import br.com.ifba.smartwaste.service.AdminService;
-import br.com.ifba.smartwaste.view.TelaCadastro;
+import br.com.ifba.smartwaste.view.TelaCadastroAdmin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,11 +15,11 @@ import java.awt.event.ActionListener;
  */
 public class TelaCadastroController implements ActionListener{
     
-    private final TelaCadastro telaCadastro;
+    private final TelaCadastroAdmin telaCadastro;
     private final AdminService adminService;
 
     public TelaCadastroController() {
-        this.telaCadastro = new TelaCadastro();
+        this.telaCadastro = new TelaCadastroAdmin();
         this.adminService = new AdminService(telaCadastro);
         addListeners();
         this.telaCadastro.setVisible(true);
