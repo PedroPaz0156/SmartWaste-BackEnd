@@ -65,11 +65,15 @@ public class PrincipalController implements ActionListener{
             ponto.setEndereco(this.telaCadPonto.getTxtEndereco().getText());
             ponto.setUltimaColeta(this.telaCadPonto.getSpnColeta().getValue());
             
-            pontoService.cadastrarPonto(this.telaCadPonto.getTxtEndereco().getText(), (int) this.telaCadPonto.getSpnLixeiras().getValue());
+            pontoService.cadastrarPonto(ponto);
         }else if(e.getSource().equals(this.telaCadPonto.getBtnFechar())) {
             this.telaCadPonto.setVisible(false);
         }else if(e.getSource().equals(this.telaEdiPonto.getBtnSalvar())) {
-            pontoService.atualizarPonto(this.telaEdiPonto.getTxtEndereco().getText());
+            Ponto ponto = new Ponto();
+            ponto.setEndereco(this.telaCadPonto.getTxtEndereco().getText());
+            ponto.setUltimaColeta(this.telaCadPonto.getSpnColeta().getValue());
+            
+            pontoService.atualizarPonto(ponto);
         }else if(e.getSource().equals(this.telaEdiPonto.getBtnFechar())) {
             this.telaEdiPonto.setVisible(false);
         }else if(e.getSource().equals(this.telaRemPonto.getBtnRemover())) {
