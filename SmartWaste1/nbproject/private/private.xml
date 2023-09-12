@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/dao/ILixeiraDAO.java</file>
+            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/service/IPontoService.java</file>
+            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/model/Ponto.java</file>
+            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/model/Lixeira.java</file>
+            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/dao/LixeiraDAO.java</file>
+            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/service/LixeiraService.java</file>
+            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/service/ILixeiraService.java</file>
+            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/service/PontoService.java</file>
+            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/dao/PontoDAO.java</file>
+        </group>
+    </open-files>
+</project-private>

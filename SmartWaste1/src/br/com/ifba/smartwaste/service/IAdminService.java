@@ -4,8 +4,6 @@
  */
 package br.com.ifba.smartwaste.service;
 
-import br.com.ifba.smartwaste.model.Administrador;
-
 
 /**
  *
@@ -13,7 +11,7 @@ import br.com.ifba.smartwaste.model.Administrador;
  */
 public interface IAdminService {
     
-    public Administrador cadastrarAdministrador();
+    public void cadastrarAdministrador();
     public void apagarAdministrador(String nome);
     public void atualizarAdministrador(String nome, String email, String cpf, String senha);
     public boolean acessarAdmin(String nome, String senha);

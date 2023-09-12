@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class LixeiraDAO implements ILixeiraDAO{
 
     @Override
-    public int criarLixeira(Lixeira lixeira) {
+    public void criarLixeira(Lixeira lixeira) {
         String sql = "INSERT * INTO lixeira (tipo, ocupacao, idsensor, idponto) VALUES (?, ?, ?, ?)";
         
         PreparedStatement pst;
@@ -42,7 +42,6 @@ public class LixeiraDAO implements ILixeiraDAO{
         }catch(SQLException ex){
             System.out.println(ex);
         }
-        return lastId;
     }
 
     @Override

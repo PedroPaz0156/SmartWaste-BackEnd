@@ -12,7 +12,7 @@ import br.com.ifba.smartwaste.model.Ponto;
  */
 public interface IPontoDAO {
     
-    public int criarPonto(Ponto ponto);
+    public void criarPonto(Ponto ponto);
     public void editarPonto(Ponto ponto);
     public boolean deletarPonto(Ponto ponto);
     public Ponto procurarPonto(int id);

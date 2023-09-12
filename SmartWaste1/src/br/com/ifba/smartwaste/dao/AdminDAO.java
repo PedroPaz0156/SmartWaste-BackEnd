@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class AdminDAO implements IAdminDAO{
 
     @Override
-    public Administrador cadastrarAdmin(Administrador admin) {
+    public void cadastrarAdmin(Administrador admin) {
         String sql = "INSERT INTO administrador (nome,email,cpf,senha) VALUES (?,?,?,?)";
         
             PreparedStatement pst;
@@ -36,11 +36,10 @@ public class AdminDAO implements IAdminDAO{
             } catch (SQLException ex) {
                 System.out.println(ex);
             } 
-            return admin;
     }
 
     @Override
-    public boolean deletarAdmin(Administrador admin) {
+    public void deletarAdmin(Administrador admin) {
         String sql = "DELETE FROM administrador WHERE cpf = ?";
         
         PreparedStatement pst;
@@ -52,10 +51,7 @@ public class AdminDAO implements IAdminDAO{
             pst.close();                
         } catch (SQLException ex) {
             System.out.println(ex);
-            return false;
         }
-        
-        return true;
     }
 
     @Override

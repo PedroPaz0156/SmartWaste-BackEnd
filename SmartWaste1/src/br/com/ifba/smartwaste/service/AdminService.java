@@ -25,13 +25,13 @@ public class AdminService implements IAdminService{
     private final TelaCadastro telaCadastro;
     
     @Override
-    public Administrador cadastrarAdministrador() {
+    public void cadastrarAdministrador() {
         this.admin = new Administrador();
         this.admin.setNome(this.telaCadastro.getTxtNome().getText());
         this.admin.setEmail(this.telaCadastro.getTxtEmail().getText());
         this.admin.setCpf(this.telaCadastro.getTxtCPF().getText());
         this.admin.setSenha(this.telaCadastro.getTxtSenha().getText());
-        return adminDAO.cadastrarAdmin(admin);
+        adminDAO.cadastrarAdmin(admin);
     }
 
     @Override

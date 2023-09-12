@@ -18,7 +18,7 @@ import java.sql.SQLException;
 public class PontoDAO implements IPontoDAO{
 
     @Override
-    public int criarPonto(Ponto ponto) {
+    public void criarPonto(Ponto ponto) {
         String sql = "INSERT * INTO ponto (endereco, ultimacoleta, ocupacaomedia) VALUES (?, ?, ?)";
         
         PreparedStatement pst;
@@ -41,7 +41,6 @@ public class PontoDAO implements IPontoDAO{
         }catch(SQLException ex){
             System.out.println(ex);
         }
-        return lastId;
     }
 
     @Override
