@@ -63,15 +63,43 @@ public class PrincipalController implements ActionListener{
         }else if(e.getSource().equals(this.telaCadPonto.getBtnCriar())) {
             Ponto ponto = new Ponto();
             ponto.setEndereco(this.telaCadPonto.getTxtEndereco().getText());
-            ponto.setUltimaColeta(this.telaCadPonto.getSpnColeta().getValue());
-            
+            if(!this.telaCadPonto.getjCheckNAddMetal().isSelected()){
+                ponto.getMetal().setIdSensor(Integer.parseInt(this.telaCadPonto.getTxtSensorMetal().getText()));
+                ponto.getMetal().setTamanho((float) (Integer.parseInt(this.telaCadPonto.getTxtTamanhoMetal().getText())));
+            } else{
+                ponto.setMetal(null);
+            }
+            if(!this.telaCadPonto.getjCheckNAddOrganico().isSelected()){
+                ponto.getOrganico().setIdSensor(Integer.parseInt(this.telaCadPonto.getTxtSensorOrganico().getText()));
+                ponto.getOrganico().setTamanho((float) (Integer.parseInt(this.telaCadPonto.getTxtTamanhoOrganico().getText())));
+            } else{
+                ponto.setOrganico(null);
+            }
+            if(!this.telaCadPonto.getjCheckNAddPapel().isSelected()){
+                ponto.getPapel().setIdSensor(Integer.parseInt(this.telaCadPonto.getTxtSensorPapel().getText()));
+                ponto.getPapel().setTamanho((float) (Integer.parseInt(this.telaCadPonto.getTxtTamanhoPapel().getText())));
+            } else{
+                ponto.setPapel(null);
+            }
+            if(!this.telaCadPonto.getjCheckNAddPlastico().isSelected()){
+                ponto.getPlastico().setIdSensor(Integer.parseInt(this.telaCadPonto.getTxtSensorPlastico().getText()));
+                ponto.getPlastico().setTamanho((float) (Integer.parseInt(this.telaCadPonto.getTxtTamanhoPlastico().getText())));
+            } else{
+                ponto.setPlastico(null);
+            }
+            if(!this.telaCadPonto.getjCheckNAddVidro().isSelected()){
+                ponto.getVidro().setIdSensor(Integer.parseInt(this.telaCadPonto.getTxtSensorVidro().getText()));
+                ponto.getVidro().setTamanho((float) (Integer.parseInt(this.telaCadPonto.getTxtTamanhoVidro().getText())));
+            } else{
+                ponto.setVidro(null);
+            }
             pontoService.cadastrarPonto(ponto);
+            
         }else if(e.getSource().equals(this.telaCadPonto.getBtnFechar())) {
             this.telaCadPonto.setVisible(false);
         }else if(e.getSource().equals(this.telaEdiPonto.getBtnSalvar())) {
             Ponto ponto = new Ponto();
-            ponto.setEndereco(this.telaCadPonto.getTxtEndereco().getText());
-            ponto.setUltimaColeta(this.telaCadPonto.getSpnColeta().getValue());
+            ponto.setEndereco(this.telaEdiPonto.getTxtEndereco().getText());
             
             pontoService.atualizarPonto(ponto);
         }else if(e.getSource().equals(this.telaEdiPonto.getBtnFechar())) {

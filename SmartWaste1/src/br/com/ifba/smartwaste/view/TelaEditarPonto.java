@@ -5,6 +5,7 @@
 package br.com.ifba.smartwaste.view;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -37,17 +38,71 @@ public class TelaEditarPonto extends javax.swing.JDialog {
         return spnColeta;
     }
 
-    public JSpinner getSpnLixeiras() {
-        return spnLixeiras;
-    }
-
     public JTextArea getTxtEndereco() {
         return txtEndereco;
     }
 
-    public JTextField getTxtSensor() {
-        return txtSensor;
+    public JCheckBox getjCheckNAddMetal() {
+        return jCheckNAddMetal;
     }
+
+    public JCheckBox getjCheckNAddOrganico() {
+        return jCheckNAddOrganico;
+    }
+
+    public JCheckBox getjCheckNAddPapel() {
+        return jCheckNAddPapel;
+    }
+
+    public JCheckBox getjCheckNAddPlastico() {
+        return jCheckNAddPlastico;
+    }
+
+    public JCheckBox getjCheckNAddVidro() {
+        return jCheckNAddVidro;
+    }
+
+    public JTextField getTxtSensorMetal() {
+        return txtSensorMetal;
+    }
+
+    public JTextField getTxtSensorOrganico() {
+        return txtSensorOrganico;
+    }
+
+    public JTextField getTxtSensorPapel() {
+        return txtSensorPapel;
+    }
+
+    public JTextField getTxtSensorPlastico() {
+        return txtSensorPlastico;
+    }
+
+    public JTextField getTxtSensorVidro() {
+        return txtSensorVidro;
+    }
+
+    public JTextField getTxtTamanhoMetal() {
+        return txtTamanhoMetal;
+    }
+
+    public JTextField getTxtTamanhoOrganico() {
+        return txtTamanhoOrganico;
+    }
+
+    public JTextField getTxtTamanhoPapel() {
+        return txtTamanhoPapel;
+    }
+
+    public JTextField getTxtTamanhoPlastico() {
+        return txtTamanhoPlastico;
+    }
+
+    public JTextField getTxtTamanhoVidro() {
+        return txtTamanhoVidro;
+    }
+
+    
 
     
     /**
@@ -62,16 +117,43 @@ public class TelaEditarPonto extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         lblEndereco = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
-        lblLixeira = new javax.swing.JLabel();
-        lblSensor = new javax.swing.JLabel();
         lblUltimaColeta = new javax.swing.JLabel();
         btnFechar = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtEndereco = new javax.swing.JTextArea();
-        spnLixeiras = new javax.swing.JSpinner();
-        txtSensor = new javax.swing.JTextField();
         spnColeta = new javax.swing.JSpinner();
+        jTabbedPaneLixeiras = new javax.swing.JTabbedPane();
+        jPanelMetal = new javax.swing.JPanel();
+        txtSensorMetal = new javax.swing.JTextField();
+        lblTamanhoMetal = new javax.swing.JLabel();
+        txtTamanhoMetal = new javax.swing.JTextField();
+        lblSensorMetal = new javax.swing.JLabel();
+        jCheckNAddMetal = new javax.swing.JCheckBox();
+        jPanelPapel = new javax.swing.JPanel();
+        txtSensorPapel = new javax.swing.JTextField();
+        lblTamanhoPapel = new javax.swing.JLabel();
+        txtTamanhoPapel = new javax.swing.JTextField();
+        lblSensorPapel = new javax.swing.JLabel();
+        jCheckNAddPapel = new javax.swing.JCheckBox();
+        jPanelPlastico = new javax.swing.JPanel();
+        txtSensorPlastico = new javax.swing.JTextField();
+        lblTamanhoPlastico = new javax.swing.JLabel();
+        txtTamanhoPlastico = new javax.swing.JTextField();
+        lblSensorPlastico = new javax.swing.JLabel();
+        jCheckNAddPlastico = new javax.swing.JCheckBox();
+        jPanelVidro = new javax.swing.JPanel();
+        txtSensorVidro = new javax.swing.JTextField();
+        lblTamanhoVidro = new javax.swing.JLabel();
+        txtTamanhoVidro = new javax.swing.JTextField();
+        lblSensorVidro = new javax.swing.JLabel();
+        jCheckNAddVidro = new javax.swing.JCheckBox();
+        jPanelOrganico = new javax.swing.JPanel();
+        txtSensorOrganico = new javax.swing.JTextField();
+        lblTamanhoOrganico = new javax.swing.JLabel();
+        txtTamanhoOrganico = new javax.swing.JTextField();
+        lblSensorOrganico = new javax.swing.JLabel();
+        jCheckNAddOrganico = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -81,12 +163,6 @@ public class TelaEditarPonto extends javax.swing.JDialog {
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTitulo.setText("Alterar ponto");
-
-        lblLixeira.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lblLixeira.setText("Nº de lixeiras:");
-
-        lblSensor.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lblSensor.setText("ID do sensor:");
 
         lblUltimaColeta.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblUltimaColeta.setText("Ultima Coleta:");
@@ -107,13 +183,241 @@ public class TelaEditarPonto extends javax.swing.JDialog {
         txtEndereco.setRows(5);
         jScrollPane1.setViewportView(txtEndereco);
 
-        spnLixeiras.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        spnLixeiras.setModel(new javax.swing.SpinnerNumberModel(1, null, 10, 1));
-
-        txtSensor.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-
         spnColeta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         spnColeta.setModel(new javax.swing.SpinnerDateModel());
+
+        jTabbedPaneLixeiras.setToolTipText("");
+        jTabbedPaneLixeiras.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        txtSensorMetal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        lblTamanhoMetal.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblTamanhoMetal.setText("Tamanho:");
+
+        lblSensorMetal.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblSensorMetal.setText("ID do sensor:");
+
+        jCheckNAddMetal.setText("Não adicionar");
+
+        javax.swing.GroupLayout jPanelMetalLayout = new javax.swing.GroupLayout(jPanelMetal);
+        jPanelMetal.setLayout(jPanelMetalLayout);
+        jPanelMetalLayout.setHorizontalGroup(
+            jPanelMetalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelMetalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelMetalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSensorMetal)
+                    .addComponent(lblTamanhoMetal))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelMetalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelMetalLayout.createSequentialGroup()
+                        .addComponent(jCheckNAddMetal)
+                        .addGap(0, 161, Short.MAX_VALUE))
+                    .addComponent(txtTamanhoMetal, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtSensorMetal, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+        );
+        jPanelMetalLayout.setVerticalGroup(
+            jPanelMetalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMetalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelMetalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtTamanhoMetal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTamanhoMetal))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelMetalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSensorMetal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSensorMetal))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckNAddMetal)
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+
+        jTabbedPaneLixeiras.addTab("Metal", jPanelMetal);
+
+        txtSensorPapel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        lblTamanhoPapel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblTamanhoPapel.setText("Tamanho:");
+
+        lblSensorPapel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblSensorPapel.setText("ID do sensor:");
+
+        jCheckNAddPapel.setText("Não adicionar");
+
+        javax.swing.GroupLayout jPanelPapelLayout = new javax.swing.GroupLayout(jPanelPapel);
+        jPanelPapel.setLayout(jPanelPapelLayout);
+        jPanelPapelLayout.setHorizontalGroup(
+            jPanelPapelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPapelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelPapelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSensorPapel)
+                    .addComponent(lblTamanhoPapel))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelPapelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPapelLayout.createSequentialGroup()
+                        .addComponent(jCheckNAddPapel)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(txtTamanhoPapel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                    .addComponent(txtSensorPapel, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+        );
+        jPanelPapelLayout.setVerticalGroup(
+            jPanelPapelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPapelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelPapelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtTamanhoPapel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTamanhoPapel))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelPapelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSensorPapel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSensorPapel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckNAddPapel)
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+
+        jTabbedPaneLixeiras.addTab("Papel", jPanelPapel);
+
+        txtSensorPlastico.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        lblTamanhoPlastico.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblTamanhoPlastico.setText("Tamanho:");
+
+        lblSensorPlastico.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblSensorPlastico.setText("ID do sensor:");
+
+        jCheckNAddPlastico.setText("Não adicionar");
+
+        javax.swing.GroupLayout jPanelPlasticoLayout = new javax.swing.GroupLayout(jPanelPlastico);
+        jPanelPlastico.setLayout(jPanelPlasticoLayout);
+        jPanelPlasticoLayout.setHorizontalGroup(
+            jPanelPlasticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPlasticoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelPlasticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSensorPlastico)
+                    .addComponent(lblTamanhoPlastico))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelPlasticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPlasticoLayout.createSequentialGroup()
+                        .addComponent(jCheckNAddPlastico)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(txtTamanhoPlastico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                    .addComponent(txtSensorPlastico, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+        );
+        jPanelPlasticoLayout.setVerticalGroup(
+            jPanelPlasticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPlasticoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelPlasticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtTamanhoPlastico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTamanhoPlastico))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelPlasticoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSensorPlastico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSensorPlastico))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckNAddPlastico)
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+
+        jTabbedPaneLixeiras.addTab("Plastico", jPanelPlastico);
+
+        txtSensorVidro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        lblTamanhoVidro.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblTamanhoVidro.setText("Tamanho:");
+
+        lblSensorVidro.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblSensorVidro.setText("ID do sensor:");
+
+        jCheckNAddVidro.setText("Não adicionar");
+
+        javax.swing.GroupLayout jPanelVidroLayout = new javax.swing.GroupLayout(jPanelVidro);
+        jPanelVidro.setLayout(jPanelVidroLayout);
+        jPanelVidroLayout.setHorizontalGroup(
+            jPanelVidroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelVidroLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelVidroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSensorVidro)
+                    .addComponent(lblTamanhoVidro))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelVidroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelVidroLayout.createSequentialGroup()
+                        .addComponent(jCheckNAddVidro)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(txtTamanhoVidro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                    .addComponent(txtSensorVidro, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+        );
+        jPanelVidroLayout.setVerticalGroup(
+            jPanelVidroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelVidroLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelVidroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtTamanhoVidro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTamanhoVidro))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelVidroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSensorVidro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSensorVidro))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckNAddVidro)
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+
+        jTabbedPaneLixeiras.addTab("Vidro", jPanelVidro);
+
+        txtSensorOrganico.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+
+        lblTamanhoOrganico.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblTamanhoOrganico.setText("Tamanho:");
+
+        lblSensorOrganico.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblSensorOrganico.setText("ID do sensor:");
+
+        jCheckNAddOrganico.setText("Não adicionar");
+
+        javax.swing.GroupLayout jPanelOrganicoLayout = new javax.swing.GroupLayout(jPanelOrganico);
+        jPanelOrganico.setLayout(jPanelOrganicoLayout);
+        jPanelOrganicoLayout.setHorizontalGroup(
+            jPanelOrganicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelOrganicoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelOrganicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSensorOrganico)
+                    .addComponent(lblTamanhoOrganico))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelOrganicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelOrganicoLayout.createSequentialGroup()
+                        .addComponent(jCheckNAddOrganico)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(txtTamanhoOrganico, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+                    .addComponent(txtSensorOrganico, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
+        );
+        jPanelOrganicoLayout.setVerticalGroup(
+            jPanelOrganicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOrganicoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelOrganicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtTamanhoOrganico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTamanhoOrganico))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelOrganicoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSensorOrganico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSensorOrganico))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckNAddOrganico)
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+
+        jTabbedPaneLixeiras.addTab("Organico", jPanelOrganico);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -124,6 +428,12 @@ public class TelaEditarPonto extends javax.swing.JDialog {
                 .addComponent(lblTitulo)
                 .addGap(124, 124, 124))
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(lblEndereco)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -131,22 +441,13 @@ public class TelaEditarPonto extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSalvar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblUltimaColeta)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(spnColeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblLixeira)
-                                    .addComponent(lblEndereco, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblSensor, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane1)
-                                    .addComponent(spnLixeiras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtSensor))))
-                        .addGap(0, 31, Short.MAX_VALUE)))
+                        .addComponent(lblUltimaColeta)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spnColeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jTabbedPaneLixeiras)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -159,14 +460,8 @@ public class TelaEditarPonto extends javax.swing.JDialog {
                     .addComponent(lblEndereco)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLixeira)
-                    .addComponent(spnLixeiras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSensor)
-                    .addComponent(txtSensor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTabbedPaneLixeiras, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUltimaColeta)
                     .addComponent(spnColeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -174,10 +469,10 @@ public class TelaEditarPonto extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFechar)
                     .addComponent(btnSalvar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(154, 154, 154))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 310));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 390));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -232,16 +527,43 @@ public class TelaEditarPonto extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JCheckBox jCheckNAddMetal;
+    private javax.swing.JCheckBox jCheckNAddOrganico;
+    private javax.swing.JCheckBox jCheckNAddPapel;
+    private javax.swing.JCheckBox jCheckNAddPlastico;
+    private javax.swing.JCheckBox jCheckNAddVidro;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelMetal;
+    private javax.swing.JPanel jPanelOrganico;
+    private javax.swing.JPanel jPanelPapel;
+    private javax.swing.JPanel jPanelPlastico;
+    private javax.swing.JPanel jPanelVidro;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPaneLixeiras;
     private javax.swing.JLabel lblEndereco;
-    private javax.swing.JLabel lblLixeira;
-    private javax.swing.JLabel lblSensor;
+    private javax.swing.JLabel lblSensorMetal;
+    private javax.swing.JLabel lblSensorOrganico;
+    private javax.swing.JLabel lblSensorPapel;
+    private javax.swing.JLabel lblSensorPlastico;
+    private javax.swing.JLabel lblSensorVidro;
+    private javax.swing.JLabel lblTamanhoMetal;
+    private javax.swing.JLabel lblTamanhoOrganico;
+    private javax.swing.JLabel lblTamanhoPapel;
+    private javax.swing.JLabel lblTamanhoPlastico;
+    private javax.swing.JLabel lblTamanhoVidro;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblUltimaColeta;
     private javax.swing.JSpinner spnColeta;
-    private javax.swing.JSpinner spnLixeiras;
     private javax.swing.JTextArea txtEndereco;
-    private javax.swing.JTextField txtSensor;
+    private javax.swing.JTextField txtSensorMetal;
+    private javax.swing.JTextField txtSensorOrganico;
+    private javax.swing.JTextField txtSensorPapel;
+    private javax.swing.JTextField txtSensorPlastico;
+    private javax.swing.JTextField txtSensorVidro;
+    private javax.swing.JTextField txtTamanhoMetal;
+    private javax.swing.JTextField txtTamanhoOrganico;
+    private javax.swing.JTextField txtTamanhoPapel;
+    private javax.swing.JTextField txtTamanhoPlastico;
+    private javax.swing.JTextField txtTamanhoVidro;
     // End of variables declaration//GEN-END:variables
 }

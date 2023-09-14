@@ -107,7 +107,11 @@ public class Ponto{
     }
     
     public Ponto(){
-    
+        this.metal.setTipo("metal");
+        this.organico.setTipo("organico");
+        this.papel.setTipo("papel");
+        this.plastico.setTipo("plastico");
+        this.vidro.setTipo("vidro");
     }
     
     
