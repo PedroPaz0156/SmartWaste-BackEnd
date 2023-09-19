@@ -9,6 +9,7 @@ import br.com.ifba.smartwaste.view.TelaCadastroAdmin;
 import br.com.ifba.smartwaste.view.TelaLogin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,7 +40,12 @@ public class LoginController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource().equals(this.telaCadastro.getBtnCadastras())) {
-            this.adminService.cadastrarAdministrador();
+            boolean cadastrado = this.adminService.cadastrarAdministrador();
+            if(cadastrado){
+                JOptionPane.showMessageDialog(telaLogin, "Cadastrado com sucesso");
+            } else{
+                JOptionPane.showMessageDialog(telaLogin, "Não foi possivel cadastrar");
+            }
         }else if(e.getSource().equals(this.telaCadastro.getBtnVoltar())){
             this.adminService.voltar();
         } else if(e.getSource().equals(this.telaLogin.getBtnCadastrar())){

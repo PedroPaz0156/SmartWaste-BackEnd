@@ -5,7 +5,6 @@
 package br.com.ifba.smartwaste.dao;
 
 import br.com.ifba.smartwaste.model.Administrador;
-import java.util.ArrayList;
 
 /**
  *
@@ -13,12 +12,12 @@ import java.util.ArrayList;
  */
 public interface IAdminDAO {
     
-    public void cadastrarAdmin(Administrador admin);
+    public boolean cadastrarAdmin(Administrador admin);
     public void deletarAdmin(Administrador admin);
     public void alterarAdmin(Administrador admin);
     public void alterarSenha(Administrador admin);
     public Administrador procurarAdm(String nome);
     public Administrador acesso(String nome, String password);
-    public ArrayList<Administrador> findByEmail(String email);
+    public Administrador findByEmail(String email);
     
 }

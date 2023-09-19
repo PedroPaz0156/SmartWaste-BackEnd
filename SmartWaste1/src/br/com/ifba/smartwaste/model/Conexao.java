@@ -13,6 +13,8 @@ import javax.swing.JOptionPane;
  *
  * @author pedro
  */
+
+
 public class Conexao {
     private static Connection conexao;
     
@@ -20,7 +22,7 @@ public class Conexao {
         
         if(conexao == null){
             try{
-                conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/smartwaste","root","ifbairece01");
+                conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/smartwaste","root","Ba56Zn30Ga31");
             } catch(SQLException e){
                 JOptionPane.showMessageDialog(null, "Não foi possível conectar ao banco de dados!");
                 throw new RuntimeException(e);

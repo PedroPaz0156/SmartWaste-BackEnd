@@ -10,6 +10,7 @@ import br.com.ifba.smartwaste.dao.AdminDAO;
 import br.com.ifba.smartwaste.model.Administrador;
 import br.com.ifba.smartwaste.view.TelaCadastroAdmin;
 import br.com.ifba.smartwaste.view.TelaLogin;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -38,13 +39,13 @@ public class AdminService implements IAdminService{
     }
     
     @Override
-    public void cadastrarAdministrador() {
+    public boolean cadastrarAdministrador() {
         this.admin = new Administrador();
         this.admin.setNome(this.telaCadastroAdmin.getTxtNome().getText());
         this.admin.setEmail(this.telaCadastroAdmin.getTxtEmail().getText());
         this.admin.setCpf(this.telaCadastroAdmin.getTxtCPF().getText());
         this.admin.setSenha(this.telaCadastroAdmin.getTxtSenha().getText());
-        adminDAO.cadastrarAdmin(admin);
+        return adminDAO.cadastrarAdmin(admin);
     }
 
     @Override
@@ -66,16 +67,21 @@ public class AdminService implements IAdminService{
 
     @Override
     public void acessarAdmin() {
-        admin = adminDAO.acesso(telaLogin.getTxtNome().getText(), telaLogin.getTxtSenha().getText());
+        admin = adminDAO.acesso(telaLogin.getTxtEmail().getText(), telaLogin.getTxtSenha().getText());
 
-        if(!telaLogin.getTxtNome().getText().isEmpty()) {
+        if(!telaLogin.getTxtEmail().getText().isEmpty()) {
             Session.setUserName(admin.getNome());
-            this.telaLogin.dispose();
-            PrincipalController pc = new PrincipalController();
-            }else{
-            JOptionPane.showMessageDialog(telaLogin, "Usuário e/ou senha incorreto(s)","Acesso Negado", 0);
+            Administrador adm = adminDAO.findByEmail(telaLogin.getTxtEmail().getText());
+            if(adm.getSenha().equals(telaLogin.getTxtSenha().getText())){
+                this.telaLogin.dispose();
+                PrincipalController pc = new PrincipalController();
+            } else {
+                JOptionPane.showMessageDialog(telaLogin, "Usuário e/ou senha incorreto(s)","Acesso Negado", 0);
             }
+        }else{
+            JOptionPane.showMessageDialog(telaLogin, "Usuário e/ou senha incorreto(s)","Acesso Negado", 0);
         }
+    }
 
     @Override
     public boolean findByName(String name) {

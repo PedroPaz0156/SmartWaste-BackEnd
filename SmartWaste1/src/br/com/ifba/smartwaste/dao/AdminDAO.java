@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class AdminDAO implements IAdminDAO{
 
     @Override
-    public void cadastrarAdmin(Administrador admin) {
+    public boolean cadastrarAdmin(Administrador admin) {
         String sql = "INSERT INTO administrador (nome,email,cpf,senha) VALUES (?,?,?,?)";
         
             PreparedStatement pst;
@@ -33,8 +33,12 @@ public class AdminDAO implements IAdminDAO{
                 pst.setString(4, admin.getSenha());
                 pst.execute();
                 pst.close();
+                
+                return true;
             } catch (SQLException ex) {
                 System.out.println(ex);
+                
+                return false;
             } 
     }
 
@@ -107,8 +111,8 @@ public class AdminDAO implements IAdminDAO{
     }
 
     @Override
-    public Administrador acesso(String nome, String password) {
-        String sql = "SELECT * FROM administrador WHERE nome = ? AND senha = md5(?)";
+    public Administrador acesso(String email, String password) {
+        String sql = "SELECT * FROM administrador WHERE email = ? AND senha = md5(?)";
         Administrador admin = new Administrador();
         
         PreparedStatement pst;
@@ -116,7 +120,7 @@ public class AdminDAO implements IAdminDAO{
         
         try{
             pst = Conexao.getConexao().prepareStatement(sql);
-            pst.setString(1, nome);
+            pst.setString(1, email);
             pst.setString(2, password);
             st = pst.executeQuery();
             
@@ -138,10 +142,10 @@ public class AdminDAO implements IAdminDAO{
     }
 
     @Override
-    public ArrayList<Administrador> findByEmail(String email) {
+    public Administrador findByEmail(String email) {
         String sql = "SELECT * FROM administrador WHERE email LIKE ? ORDER BY email,nome";
         
-        ArrayList<Administrador> lista = new ArrayList<>();
+        Administrador adm = new Administrador();
         
         PreparedStatement pst;
         ResultSet rs;
@@ -152,12 +156,10 @@ public class AdminDAO implements IAdminDAO{
             rs = pst.executeQuery();
             
             while(rs.next()){
-                Administrador admin = new Administrador();
-                admin.setEmail(rs.getString("email"));
-                admin.setNome(rs.getString("nome"));
-                admin.setCpf(rs.getString("cpf"));
-                admin.setSenha(rs.getString("senha"));
-                lista.add(admin);
+                adm.setEmail(rs.getString("email"));
+                adm.setNome(rs.getString("nome"));
+                adm.setCpf(rs.getString("cpf"));
+                adm.setSenha(rs.getString("senha"));
             }
             
             rs.close();
@@ -167,7 +169,7 @@ public class AdminDAO implements IAdminDAO{
             System.out.println(ex);
         }
         
-        return lista;
+        return adm;
     }
 
     @Override

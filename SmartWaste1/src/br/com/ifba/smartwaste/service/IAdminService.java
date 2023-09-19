@@ -10,7 +10,7 @@ package br.com.ifba.smartwaste.service;
  */
 public interface IAdminService {
     
-    public void cadastrarAdministrador();
+    public boolean cadastrarAdministrador();
     public void apagarAdministrador(String nome);
     public void atualizarAdministrador(String nome, String email, String cpf, String senha);
     public void acessarAdmin();
