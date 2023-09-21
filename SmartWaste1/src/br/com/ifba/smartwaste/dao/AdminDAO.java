@@ -20,7 +20,7 @@ public class AdminDAO implements IAdminDAO{
 
     @Override
     public boolean cadastrarAdmin(Administrador admin) {
-        String sql = "INSERT INTO administrador (nome,email,cpf,senha) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO administrador (nome,email,cpf,senha) VALUES (?,?,?,md5(?))";
         
             PreparedStatement pst;
             ResultSet rs;
@@ -60,7 +60,7 @@ public class AdminDAO implements IAdminDAO{
 
     @Override
     public void alterarAdmin(Administrador admin) {
-        String sql = "UPDATE administrador SET nome = ? , email = ?, cpf = ?, senha = ?";
+        String sql = "UPDATE administrador SET nome = ? , email = ?, cpf = ?, senha = md5(?)";
         
         PreparedStatement pst;
         try {
@@ -172,6 +172,38 @@ public class AdminDAO implements IAdminDAO{
         return adm;
     }
 
+    @Override
+    public ArrayList <Administrador> findAll() {
+        String sql = "SELECT * FROM administrador ORDER BY nome";
+        
+        ArrayList <Administrador> lista = new ArrayList();
+        Administrador adm = new Administrador();
+        
+        PreparedStatement pst;
+        ResultSet rs;
+        
+        try {
+            pst = Conexao.getConexao().prepareStatement(sql);
+            rs = pst.executeQuery();
+            
+            while(rs.next()){
+                adm.setEmail(rs.getString("email"));
+                adm.setNome(rs.getString("nome"));
+                adm.setCpf(rs.getString("cpf"));
+                adm.setSenha(rs.getString("senha"));
+                lista.add(adm);
+            }
+            
+            rs.close();
+            pst.close();
+            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        
+        return lista;
+    }
+    
     @Override
     public void alterarSenha(Administrador admin) {
         String sql = "UPDATE administrador SET senha = md5(?) WHERE email LIKE ?";

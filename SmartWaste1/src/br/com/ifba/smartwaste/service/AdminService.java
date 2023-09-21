@@ -104,6 +104,11 @@ public class AdminService implements IAdminService{
     }
     
     @Override
+    public ArrayList <Administrador> findAll() {
+        return adminDAO.findAll();
+    }
+    
+    @Override
     public void abrirTelaCadastro() {
         telaLogin.setVisible(false);
         telaCadastroAdmin.setVisible(true);

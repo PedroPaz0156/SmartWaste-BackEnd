@@ -10,6 +10,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -45,14 +46,14 @@ public class PontoDAO implements IPontoDAO{
 
     @Override
     public void editarPonto(Ponto ponto) {
-        String sql = "UPDATE ponto SET endereco = ?, ultimacoleta = ?, ocupacaomedia = ?, lixeiras = ? WHERE id = ?";
+        String sql = "UPDATE ponto SET endereco = ?, ultimacoleta = ?, ocupacaomedia = ? WHERE id = ?";
         PreparedStatement pst;
         try {
             pst = Conexao.getConexao().prepareStatement(sql);
             pst.setString(1, ponto.getEndereco());
             pst.setDate(2, (Date) ponto.getUltimaColeta());
             pst.setFloat(3, ponto.getOcupacaoMedia());
-            pst.setInt(5, ponto.getIdPonto());
+            pst.setInt(4, ponto.getIdPonto());
             pst.execute();
             pst.close();
             
@@ -140,6 +141,38 @@ public class PontoDAO implements IPontoDAO{
         return ponto;
     }
 
+    @Override
+    public ArrayList <Ponto> findAll() {
+        String sql = "SELECT * FROM ponto";
+        
+        ArrayList <Ponto> lista = new ArrayList();
+        Ponto ponto = new Ponto();
+        
+        PreparedStatement pst;
+        ResultSet rs;
+        
+        try {
+            pst = Conexao.getConexao().prepareStatement(sql);
+            rs = pst.executeQuery();
+            
+            if(rs.next()){
+                ponto.setIdPonto(rs.getInt("id"));
+                ponto.setEndereco(rs.getString("Endereco"));
+                ponto.setOcupacaoMedia(rs.getFloat("ocupacaomedia"));                
+                ponto.setUltimaColeta(rs.getDate("ultimacoleta"));
+                lista.add(ponto);
+            }
+            
+            rs.close();
+            pst.close();
+            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        
+        return lista;
+    }
+    
     public int nextId() {
         String sql = "SELECT AUTO_INCREMENT AS ID FROM INFORMATION_SCHEMA.TABLES " +
                 "WHERE TABLE_SCHEMA = ? AND TABLE_NAME = ?";

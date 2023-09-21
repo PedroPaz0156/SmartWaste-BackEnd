@@ -63,4 +63,21 @@ public class PontoService implements IPontoService{
         }
     }
     
+    @Override
+    public ArrayList <Ponto> findAll() {
+        
+        ArrayList <Ponto> listaPontos = pontoDAO.findAll();
+        ArrayList<Lixeira> listaLixo;
+        for (int i = 0; i < listaPontos.size(); i++){
+            listaLixo = lixeiraService.findByIdPonto(listaPontos.get(i).getIdPonto());
+            listaPontos.get(i).setMetal(listaLixo.get(0));
+            listaPontos.get(i).setOrganico(listaLixo.get(1));
+            listaPontos.get(i).setPapel(listaLixo.get(2));
+            listaPontos.get(i).setPlastico(listaLixo.get(3));
+            listaPontos.get(i).setVidro(listaLixo.get(4));
+        }
+        return listaPontos;
+        
+    }
+    
 }

@@ -5,6 +5,7 @@
 package br.com.ifba.smartwaste.dao;
 
 import br.com.ifba.smartwaste.model.Ponto;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,5 +18,6 @@ public interface IPontoDAO {
     public boolean deletarPonto(Ponto ponto);
     public Ponto procurarPonto(int id);
     public Ponto findByEndereco(String endereco);
+    public ArrayList <Ponto> findAll();
     
 }
