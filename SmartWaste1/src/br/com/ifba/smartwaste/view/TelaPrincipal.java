@@ -5,6 +5,7 @@
 package br.com.ifba.smartwaste.view;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
  *
@@ -37,6 +38,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         return btnSair;
     }
 
+    public JButton getBtnLixinho() {
+        return btnLixinho;
+    }
+
+    public JLabel getLblDica() {
+        return lblDica;
+    }
+
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,6 +62,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnSair = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
+        btnLixinho = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        lblDica = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -110,6 +122,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 400));
 
+        btnLixinho.setBackground(new java.awt.Color(204, 204, 204));
+        btnLixinho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ifba/smartwaste/images/logo pequena.png"))); // NOI18N
+        btnLixinho.setBorder(null);
+        jPanel1.add(btnLixinho, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 10, -1, -1));
+
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblDica.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDica.setText("Clique na lixeira");
+        jPanel3.add(lblDica, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 170));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, 160, 170));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 400));
 
         pack();
@@ -164,10 +189,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnLixinho;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnRemover;
     private javax.swing.JButton btnSair;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblDica;
     // End of variables declaration//GEN-END:variables
 }

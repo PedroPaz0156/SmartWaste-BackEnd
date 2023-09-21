@@ -4,11 +4,18 @@
  */
 package br.com.ifba.smartwaste.service;
 
+import br.com.ifba.smartwaste.model.Dicas;
+import java.util.ArrayList;
+
 /**
  *
  * @author Pedro Augusto
  */
 public interface IServiceDicas {
-    public String sortearDica(int ultimaDica);
+    public void adicionarDica(String dica);
+    public void alterarDica(String dica);
+    public void removerDica(int id);
+    public ArrayList<Dicas> listar();
+    public String sortearDica();
     
 }

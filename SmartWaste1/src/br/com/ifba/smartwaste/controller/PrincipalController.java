@@ -5,6 +5,7 @@
 package br.com.ifba.smartwaste.controller;
 
 import br.com.ifba.smartwaste.model.Ponto;
+import br.com.ifba.smartwaste.service.DicaService;
 import br.com.ifba.smartwaste.service.PontoService;
 import br.com.ifba.smartwaste.view.TelaCadastroPonto;
 import br.com.ifba.smartwaste.view.TelaEditarPonto;
@@ -25,6 +26,7 @@ public class PrincipalController implements ActionListener{
     
     private final TelaPrincipal telaPrincipal;
     private final PontoService pontoService;
+    private final DicaService dicaService;
     
     public PrincipalController() {
         this.telaPrincipal = new TelaPrincipal();
@@ -32,6 +34,7 @@ public class PrincipalController implements ActionListener{
         this.telaCadPonto = new TelaCadastroPonto(telaPrincipal, true);
         this.telaEdiPonto = new TelaEditarPonto(telaPrincipal, true);
         this.telaRemPonto = new TelaRemoverPonto(telaPrincipal, true);
+        this.dicaService = new DicaService();
         addListeners();
         this.telaPrincipal.setVisible(true);
     }
@@ -41,6 +44,7 @@ public class PrincipalController implements ActionListener{
         this.telaPrincipal.getBtnAlterar().addActionListener(this);
         this.telaPrincipal.getBtnRemover().addActionListener(this);
         this.telaPrincipal.getBtnSair().addActionListener(this);
+        this.telaPrincipal.getBtnLixinho().addActionListener(this);
         this.telaCadPonto.getBtnCriar().addActionListener(this);
         this.telaCadPonto.getBtnFechar().addActionListener(this);
         this.telaEdiPonto.getBtnSalvar().addActionListener(this);
@@ -108,6 +112,8 @@ public class PrincipalController implements ActionListener{
             pontoService.apagarPonto(this.telaRemPonto.getTxtEndereco().getText());
         }else if(e.getSource().equals(this.telaRemPonto.getBtnFechar())) {
             this.telaRemPonto.setVisible(false);
+        }else if(e.getSource().equals(this.telaPrincipal.getBtnLixinho())) {
+            this.telaPrincipal.getLblDica().setText("<html> <p> " + dicaService.sortearDica() + "</p> </html>");
         }
     }
     

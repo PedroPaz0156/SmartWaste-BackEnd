@@ -24,9 +24,9 @@ DROP TABLE IF EXISTS `dicas`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `dicas` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `dica` longtext NOT NULL,
+  `dica` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,6 +35,7 @@ CREATE TABLE `dicas` (
 
 LOCK TABLES `dicas` WRITE;
 /*!40000 ALTER TABLE `dicas` DISABLE KEYS */;
+INSERT INTO `dicas` VALUES (1,'Você sabia que isopor é 100% reciclável? Ele é feito 98% de ar e 2% de poliestireno expandido. Da próxima vez que for descarta-lo jogue na lixeira de plástico.'),(2,'Pode ser que leve muito tempo para a embalagem chegar até o centro de reciclagem. Portanto, todos os materiais antes de serem descartados, devem ser higienizados para evitar possíveis contaminações ou proliferação de fungos e bactérias.'),(3,'Lembre-se das cores das lixeiras de reciclagem: Vermelho - Plástico Azul - Papel Amarelo - Metal Verde - Vidro Preto - Madeira Marrom - Orgânico Cinza - Não-reciclável ');
 /*!40000 ALTER TABLE `dicas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -47,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-17 19:06:03
+-- Dump completed on 2023-09-21 19:54:01

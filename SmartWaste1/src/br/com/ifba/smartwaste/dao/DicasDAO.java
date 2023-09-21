@@ -19,7 +19,7 @@ public class DicasDAO implements IDicaDAO{
 
     @Override
     public void inserir(Dicas dica) {
-        String sql = "INSERT * INTO dicas (dica) VALUES (?)";
+        String sql = "INSERT * INTO dicas (dica) VALUES (?);";
         
         PreparedStatement pst;
         ResultSet st;
@@ -43,7 +43,7 @@ public class DicasDAO implements IDicaDAO{
 
     @Override
     public void alterar(Dicas dica) {
-        String sql = "UPDATE dicas SET dica = ? WHERE id = ?";
+        String sql = "UPDATE dicas SET dica = ? WHERE id = ?;";
         
         PreparedStatement pst;
         
@@ -61,7 +61,7 @@ public class DicasDAO implements IDicaDAO{
 
     @Override
     public void deletar(Dicas dica) {
-        String sql = "DELETE * FROM dicas WHERE id = ?";
+        String sql = "DELETE * FROM dicas WHERE id = ?;";
         PreparedStatement pst;
         
         try {
@@ -76,7 +76,7 @@ public class DicasDAO implements IDicaDAO{
 
     @Override
     public Dicas procurar(int id) {
-        String sql = "SELECT * FROM dicas WHERE id = ?";
+        String sql = "SELECT * FROM dicas WHERE id = ?;";
         
         Dicas dica = new Dicas();
         
@@ -105,7 +105,7 @@ public class DicasDAO implements IDicaDAO{
 
     @Override
     public ArrayList<Dicas> listar() {
-        String sql = "SELECT * FROM dicas ORDER BY id, dica";
+        String sql = "SELECT * FROM dicas ORDER BY id, dica;";
         
         ArrayList<Dicas> lista = new ArrayList<>();
         
