@@ -54,6 +54,38 @@ public class Ponto{
     public void setOcupacaoMedia(float ocupacaoMedia) {
         this.ocupacaoMedia = ocupacaoMedia;
     }
+    
+    public void calcOcupacaoMedia() {
+        float total =0;
+        int numero = 0;
+        Lixeira lixo = new Lixeira();
+        lixo.setTipo("metal");
+        if (!this.getMetal().equals(lixo)){
+            numero +=this.getMetal().getOcupacao();
+            total++;
+        }
+        lixo.setTipo("organico");
+        if (!this.getOrganico().equals(lixo)){
+            numero +=this.getOrganico().getOcupacao();
+            total++;
+        }
+        lixo.setTipo("papel");
+        if (!this.getPapel().equals(lixo)){
+            numero +=this.getPapel().getOcupacao();
+            total++;
+        }
+        lixo.setTipo("plastico");
+        if (!this.getPlastico().equals(lixo)){
+            numero +=this.getPlastico().getOcupacao();
+            total++;
+        }
+        lixo.setTipo("vidro");
+        if (!this.getVidro().equals(lixo)){
+            numero +=this.getVidro().getOcupacao();
+            total++;
+        }
+        this.ocupacaoMedia = (total/numero);
+    }
 
     public Lixeira getMetal() {
         return metal;

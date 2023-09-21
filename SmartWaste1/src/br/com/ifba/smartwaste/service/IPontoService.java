@@ -5,6 +5,7 @@
 package br.com.ifba.smartwaste.service;
 
 import br.com.ifba.smartwaste.model.Ponto;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,4 +17,5 @@ public interface IPontoService {
     public void apagarPonto(String endereco);
     public void atualizarPonto(Ponto ponto);
     public Ponto findByEndereco(String endereco);
+    public ArrayList <Ponto> findAll();
 }

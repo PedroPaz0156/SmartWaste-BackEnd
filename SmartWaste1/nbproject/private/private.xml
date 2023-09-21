@@ -7,21 +7,6 @@
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/SmartWaste1/src/br/com/ifba/smartwaste/dao/IDicaDAO.java</file>
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/SmartWaste1/src/br/com/ifba/smartwaste/service/ServiceDica.java</file>
         </group>
-        <group>
-            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/controller/LoginController.java</file>
-            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/service/IAdminService.java</file>
-            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/infrastructure/util/Session.java</file>
-            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/view/TelaCadastroPonto.java</file>
-            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/view/TelaPrincipal.java</file>
-            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/view/TelaLogin.java</file>
-            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/controller/PrincipalController.java</file>
-            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/MainTest.java</file>
-            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/model/Conexao.java</file>
-            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/service/AdminService.java</file>
-            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/dao/IAdminDAO.java</file>
-            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/dao/AdminDAO.java</file>
-            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/infrastructure/exception/BusinessException.java</file>
-            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/view/TelaEditarPonto.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
