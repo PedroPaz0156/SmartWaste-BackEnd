@@ -18,7 +18,6 @@ public class PontoService implements IPontoService{
 
     private final PontoDAO pontoDAO = new PontoDAO();
     private Ponto ponto;
-    private TelaListaPonto2 telaListaPonto;
     private final LixeiraService lixeiraService = new LixeiraService();
     
     @Override
@@ -82,11 +81,20 @@ public class PontoService implements IPontoService{
             Ponto p = pontoDAO.procurarPonto(id);
             ArrayList<Lixeira> lista;
             lista = lixeiraService.findByIdPonto(p.getIdPonto());
-            p.setMetal(lista.get(0));
-            p.setOrganico(lista.get(1));
-            p.setPapel(lista.get(2));
-            p.setPlastico(lista.get(3));
-            p.setVidro(lista.get(4));
+            for(int i = 0; i < lista.size(); i++){
+                switch (lista.get(i).getTipo()){
+                    case "metal":
+                        p.setMetal(lista.get(i));
+                    case "organico":
+                        p.setOrganico(lista.get(i));
+                    case "papel":
+                        p.setPapel(lista.get(i));
+                    case "plastico":
+                        p.setPlastico(lista.get(i));
+                    case "vidro":
+                        p.setVidro(lista.get(i));
+                }
+            }
             return p;
         }else{
             return null;
@@ -100,20 +108,29 @@ public class PontoService implements IPontoService{
         ArrayList<Lixeira> listaLixo;
         for (int i = 0; i < listaPontos.size(); i++){
             listaLixo = lixeiraService.findByIdPonto(listaPontos.get(i).getIdPonto());
-            listaPontos.get(i).setMetal(listaLixo.get(0));
-            listaPontos.get(i).setOrganico(listaLixo.get(1));
-            listaPontos.get(i).setPapel(listaLixo.get(2));
-            listaPontos.get(i).setPlastico(listaLixo.get(3));
-            listaPontos.get(i).setVidro(listaLixo.get(4));
+            for(int j = 0; j < listaLixo.size(); j++){
+                switch (listaLixo.get(j).getTipo()){
+                    case "metal":
+                        listaPontos.get(i).setMetal(listaLixo.get(j));
+                    case "organico":
+                        listaPontos.get(i).setOrganico(listaLixo.get(j));
+                    case "papel":
+                        listaPontos.get(i).setPapel(listaLixo.get(j));
+                    case "plastico":
+                        listaPontos.get(i).setPlastico(listaLixo.get(j));
+                    case "vidro":
+                        listaPontos.get(i).setVidro(listaLixo.get(j));
+                }
+            }
         }
         return listaPontos;
     }
     
     @Override
-    public void gerarLista(ArrayList <Ponto> lista){
-        telaListaPonto.limpaTabela();
+    public void gerarLista(ArrayList <Ponto> lista, TelaListaPonto2 tlp){
+        tlp.limpaTabela();
         for(int i=0;i<lista.size();i++){
-            telaListaPonto.adicionaItem
+            tlp.adicionaItem
                            (lista.get(i).getIdPonto(),
                            lista.get(i).getEndereco(),
                            lista.get(i).getOcupacaoMedia());
@@ -121,8 +138,8 @@ public class PontoService implements IPontoService{
     }
     
     @Override
-    public void listarPonto(){
-        gerarLista(findAll());
+    public void listarPonto(TelaListaPonto2 tlp){
+        gerarLista(findAll(), tlp);
     }
     
 }

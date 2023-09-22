@@ -16,7 +16,7 @@ public class Lixeira{
     private float ocupacao;
     private float tamanho;
     private String tipo;
-    private int idSensor;
+    private boolean existe;
     private int idPonto;
 
     public int getIdLixeira() {
@@ -59,12 +59,12 @@ public class Lixeira{
         this.tipo = tipo;
     }
 
-    public int getIdSensor() {
-        return idSensor;
+    public boolean isReal() {
+        return existe;
     }
 
-    public void setIdSensor(int idSensor) {
-        this.idSensor = idSensor;
+    public void setExiste(boolean existe) {
+        this.existe = existe;
     }
 
     public int getIdPonto() {
@@ -80,10 +80,10 @@ public class Lixeira{
         return 100*(tamanho-medida)/tamanho;
     }
 
-    public Lixeira(float tamanho, String tipo, int idSensor, int idPonto) {
+    public Lixeira(float tamanho, String tipo, int idPonto) {
         this.tamanho = tamanho;
         this.tipo = tipo;
-        this.idSensor = idSensor;
+        existe = false;
         this.idPonto = idPonto;
     }
     

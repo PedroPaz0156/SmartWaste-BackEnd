@@ -58,29 +58,23 @@ public class Ponto{
     public void calcOcupacaoMedia() {
         float total =0;
         int numero = 0;
-        Lixeira lixo = new Lixeira();
-        lixo.setTipo("metal");
-        if (!this.getMetal().equals(lixo)){
+        if (!this.getMetal().isReal()){
             numero +=this.getMetal().getOcupacao();
             total++;
         }
-        lixo.setTipo("organico");
-        if (!this.getOrganico().equals(lixo)){
+        if (!this.getOrganico().isReal()){
             numero +=this.getOrganico().getOcupacao();
             total++;
         }
-        lixo.setTipo("papel");
-        if (!this.getPapel().equals(lixo)){
+        if (!this.getPapel().isReal()){
             numero +=this.getPapel().getOcupacao();
             total++;
         }
-        lixo.setTipo("plastico");
-        if (!this.getPlastico().equals(lixo)){
+        if (!this.getPlastico().isReal()){
             numero +=this.getPlastico().getOcupacao();
             total++;
         }
-        lixo.setTipo("vidro");
-        if (!this.getVidro().equals(lixo)){
+        if (!this.getVidro().isReal()){
             numero +=this.getVidro().getOcupacao();
             total++;
         }
@@ -127,18 +121,23 @@ public class Ponto{
         this.vidro = vidro;
     }
 
-    public Ponto(int idPonto, String endereco, Date ultimaColeta, float ocupacaoMedia, float tamanhoMet, int idSensorMet, float tamanhoOrg, int idSensorOrg, float tamanhoPap, int idSensorPap, float tamanhoPla, int idSensorPla, float tamanhoVid, int idSensorVid) {
+    public Ponto(int idPonto, String endereco, Date ultimaColeta, float ocupacaoMedia, float tamanhoMet, float tamanhoOrg, float tamanhoPap, float tamanhoPla, float tamanhoVid) {
         this.endereco = endereco;
         this.ultimaColeta = ultimaColeta;
         this.ocupacaoMedia = ocupacaoMedia;
-        this.metal = new Lixeira(tamanhoMet, "metal", idSensorMet, idPonto);
-        this.organico = new Lixeira(tamanhoOrg, "organico", idSensorOrg, idPonto);
-        this.papel = new Lixeira(tamanhoPap, "papel", idSensorPap, idPonto);
-        this.plastico = new Lixeira(tamanhoPla, "plastico", idSensorPla, idPonto);
-        this.vidro = new Lixeira(tamanhoVid, "vidro", idSensorVid, idPonto);
+        this.metal = new Lixeira(tamanhoMet, "metal", idPonto);
+        this.organico = new Lixeira(tamanhoOrg, "organico", idPonto);
+        this.papel = new Lixeira(tamanhoPap, "papel", idPonto);
+        this.plastico = new Lixeira(tamanhoPla, "plastico", idPonto);
+        this.vidro = new Lixeira(tamanhoVid, "vidro", idPonto);
     }
     
     public Ponto(){
+        this.metal = new Lixeira();
+        this.organico = new Lixeira();
+        this.papel = new Lixeira();
+        this.plastico = new Lixeira();
+        this.vidro = new Lixeira();
         this.metal.setTipo("metal");
         this.organico.setTipo("organico");
         this.papel.setTipo("papel");

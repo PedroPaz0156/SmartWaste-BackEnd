@@ -11,6 +11,7 @@ package br.com.ifba.smartwaste.model;
 public class Sensor{
     
     private int idSensor;
+    private int idLixeira;    
     private int distanciaAtual;
 
     public int getIdSensor() {
@@ -19,6 +20,14 @@ public class Sensor{
 
     public void setIdSensor(int idSensor) {
         this.idSensor = idSensor;
+    }
+
+    public int getIdLixeira() {
+        return idLixeira;
+    }
+
+    public void setIdLixeira(int idLixeira) {
+        this.idLixeira = idLixeira;
     }
 
     public int getDistanciaAtual() {

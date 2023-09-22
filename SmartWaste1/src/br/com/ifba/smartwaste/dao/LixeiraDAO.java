@@ -19,7 +19,7 @@ public class LixeiraDAO implements ILixeiraDAO{
 
     @Override
     public void criarLixeira(Lixeira lixeira) {
-        String sql = "INSERT * INTO lixeira (tipo, ocupacao, idsensor, idponto) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT * INTO lixeira (tipo, ocupacao, existe, idponto) VALUES (?, ?, ?, ?)";
         
         PreparedStatement pst;
         ResultSet st;
@@ -29,7 +29,7 @@ public class LixeiraDAO implements ILixeiraDAO{
             pst = Conexao.getConexao().prepareStatement(sql);
             pst.setString(1, lixeira.getTipo());
             pst.setFloat(2, lixeira.getOcupacao());
-            pst.setInt(3, lixeira.getIdSensor());
+            pst.setBoolean(3, lixeira.isReal());
             pst.setInt(4, lixeira.getIdPonto());
             pst.execute();
             st = pst.getGeneratedKeys();
@@ -46,13 +46,13 @@ public class LixeiraDAO implements ILixeiraDAO{
 
     @Override
     public void atualizarLixeira(Lixeira lixeira) {
-        String sql = "UPDATE ponto SET tipo = ?, ocupacao = ?, idsensor = ?, idponto WHERE id = ?";
+        String sql = "UPDATE ponto SET tipo = ?, ocupacao = ?, existe = ?, idponto WHERE idlixeira = ?";
         PreparedStatement pst;
         try {
             pst = Conexao.getConexao().prepareStatement(sql);
             pst.setString(1, lixeira.getTipo());
             pst.setFloat(2, lixeira.getOcupacao());
-            pst.setInt(3, lixeira.getIdSensor());
+            pst.setBoolean(3, lixeira.isReal());
             pst.setInt(4, lixeira.getIdPonto());
             pst.setInt(5, lixeira.getIdLixeira());
             pst.execute();
@@ -65,7 +65,7 @@ public class LixeiraDAO implements ILixeiraDAO{
 
     @Override
     public void deletarLixeira(Lixeira lixeira) {
-        String sql = "DELETE FROM lixeira WHERE id = ?";
+        String sql = "DELETE FROM lixeira WHERE idlixeira = ?";
         PreparedStatement pst;
         
         try {
@@ -80,7 +80,7 @@ public class LixeiraDAO implements ILixeiraDAO{
 
     @Override
     public Lixeira pesquisarLixo(int id) {
-        String sql = "SELECT * FROM lixeira WHERE id = ?";
+        String sql = "SELECT * FROM lixeira WHERE idlixeira = ?";
         
         Lixeira lixeira = new Lixeira();
         
@@ -93,10 +93,10 @@ public class LixeiraDAO implements ILixeiraDAO{
             rs = pst.executeQuery();
             
             if(rs.next()){
-                lixeira.setIdLixeira(rs.getInt("id"));
+                lixeira.setIdLixeira(rs.getInt("idlixeira"));
                 lixeira.setTipo(rs.getString("tipo"));
-                lixeira.setOcupacao(rs.getFloat("ocupacao"));                
-                lixeira.setIdSensor(rs.getInt("idsensor"));
+                lixeira.setOcupacao(rs.getFloat("ocupacao")); 
+                lixeira.setExiste(rs.getBoolean("existe"));
             }
             
             rs.close();
@@ -126,11 +126,11 @@ public class LixeiraDAO implements ILixeiraDAO{
                 Lixeira lixo = new Lixeira();
                 lixo.setIdPonto(Integer.parseInt(rs.getString("idponto")));
                 lixo.setIdLixeira(Integer.parseInt(rs.getString("idlixeira")));
-                lixo.setIdSensor(Integer.parseInt(rs.getString("idsensor")));
                 lixo.setMedida(Integer.parseInt(rs.getString("medida")));
                 lixo.setOcupacao(Float.parseFloat(rs.getString("ocupacao")));
                 lixo.setTamanho(Float.parseFloat(rs.getString("tamanho")));
                 lixo.setTipo(rs.getString("tipo"));
+                lixo.setExiste(Boolean.parseBoolean(rs.getString("existe")));
                 lista.add(lixo);
             }
             
