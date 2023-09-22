@@ -15,6 +15,7 @@ public interface IServiceDicas {
     public void adicionarDica(String dica);
     public void alterarDica(String dica);
     public void removerDica(int id);
+    public Dicas procurar(int id);
     public ArrayList<Dicas> listar();
     public String sortearDica();
     
