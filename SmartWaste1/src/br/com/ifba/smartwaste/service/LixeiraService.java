@@ -35,11 +35,7 @@ public class LixeiraService implements ILixeiraService {
 
     @Override
     public Lixeira findByIdLixeira(int idLixeira) {
-        if(!(idLixeira==0)) {
-            return lixeiraDAO.pesquisarLixo(idLixeira);
-        }else{
-            return null;
-        }
+        return lixeiraDAO.pesquisarLixo(idLixeira);
     }
     
     

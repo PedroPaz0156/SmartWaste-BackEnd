@@ -14,8 +14,13 @@ import java.util.ArrayList;
 public interface IPontoService {
     
     public void cadastrarPonto(Ponto ponto);
-    public void apagarPonto(String endereco);
+    public void apagarPontoByEndereco(String endereco);
+    public void apagarPontoById(int id);
+    public void apagarPonto(Ponto ponto);
     public void atualizarPonto(Ponto ponto);
     public Ponto findByEndereco(String endereco);
+    public Ponto findById(int id);
     public ArrayList <Ponto> findAll();
+    public void gerarLista(ArrayList <Ponto> lista);
+    public void listarPonto();
 }

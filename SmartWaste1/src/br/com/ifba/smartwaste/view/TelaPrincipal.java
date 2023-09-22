@@ -22,16 +22,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
-    public JButton getBtnAlterar() {
-        return btnAlterar;
+    public JButton getBtnListarPontos() {
+        return btnListarPontos;
     }
 
     public JButton getBtnNovo() {
         return btnNovo;
-    }
-
-    public JButton getBtnRemover() {
-        return btnRemover;
     }
 
     public JButton getBtnSair() {
@@ -60,8 +56,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         btnNovo = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
-        btnAlterar = new javax.swing.JButton();
-        btnRemover = new javax.swing.JButton();
+        btnListarPontos = new javax.swing.JButton();
         btnLixinho = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         lblDica = new javax.swing.JLabel();
@@ -94,31 +89,18 @@ public class TelaPrincipal extends javax.swing.JFrame {
         btnSair.setText("Sair da Conta");
         jPanel2.add(btnSair, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, -1, -1));
 
-        btnAlterar.setBackground(new java.awt.Color(77, 166, 96));
-        btnAlterar.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnAlterar.setForeground(new java.awt.Color(255, 255, 255));
-        btnAlterar.setText("Alterar um ponto");
-        btnAlterar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnAlterar.setContentAreaFilled(false);
-        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+        btnListarPontos.setBackground(new java.awt.Color(77, 166, 96));
+        btnListarPontos.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        btnListarPontos.setForeground(new java.awt.Color(255, 255, 255));
+        btnListarPontos.setText("Mostrar pontos");
+        btnListarPontos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnListarPontos.setContentAreaFilled(false);
+        btnListarPontos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlterarActionPerformed(evt);
+                btnListarPontosActionPerformed(evt);
             }
         });
-        jPanel2.add(btnAlterar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 160, -1));
-
-        btnRemover.setBackground(new java.awt.Color(77, 166, 96));
-        btnRemover.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        btnRemover.setForeground(new java.awt.Color(255, 255, 255));
-        btnRemover.setText("Remover um ponto");
-        btnRemover.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnRemover.setContentAreaFilled(false);
-        btnRemover.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoverActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnRemover, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
+        jPanel2.add(btnListarPontos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 160, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 400));
 
@@ -140,17 +122,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+    private void btnListarPontosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarPontosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAlterarActionPerformed
+    }//GEN-LAST:event_btnListarPontosActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNovoActionPerformed
-
-    private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRemoverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,10 +166,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnListarPontos;
     private javax.swing.JButton btnLixinho;
     private javax.swing.JButton btnNovo;
-    private javax.swing.JButton btnRemover;
     private javax.swing.JButton btnSair;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
