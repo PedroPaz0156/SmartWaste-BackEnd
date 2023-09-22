@@ -20,8 +20,7 @@ public class PontoDAO implements IPontoDAO{
 
     @Override
     public void criarPonto(Ponto ponto) {
-        String sql = "INSERT INTO ponto (endereco, ultimacoleta, ocupacaomedia) VALUES (?, ?, ?)";
-        //talvez n tenha esse * no INSERT INTO
+        String sql = "INSERT INTO ponto (endereco, ultimacoleta, ocupacaomedia, id) VALUES (?, ?, ?, ?)";
         PreparedStatement pst;
         ResultSet st;
         int lastId = 0;
@@ -31,6 +30,8 @@ public class PontoDAO implements IPontoDAO{
             pst.setString(1, ponto.getEndereco());
             pst.setDate(2, (Date) ponto.getUltimaColeta());
             pst.setFloat(3, ponto.getOcupacaoMedia());
+            pst.setInt(4, ponto.getIdPonto());
+            //NÂO DEVERIA SER ASSIM MAS DEVE FUNCIONAR
             pst.execute();
             st = pst.getGeneratedKeys();
             
@@ -145,9 +146,7 @@ public class PontoDAO implements IPontoDAO{
     public ArrayList <Ponto> findAll() {
         String sql = "SELECT * FROM ponto";
         
-        ArrayList <Ponto> lista = new ArrayList();
-        Ponto ponto = new Ponto();
-        
+        ArrayList <Ponto> lista = new ArrayList();        
         PreparedStatement pst;
         ResultSet rs;
         
@@ -155,7 +154,8 @@ public class PontoDAO implements IPontoDAO{
             pst = Conexao.getConexao().prepareStatement(sql);
             rs = pst.executeQuery();
             
-            if(rs.next()){
+            while(rs.next()){
+                Ponto ponto = new Ponto();
                 ponto.setIdPonto(rs.getInt("id"));
                 ponto.setEndereco(rs.getString("Endereco"));
                 ponto.setOcupacaoMedia(rs.getFloat("ocupacaomedia"));                

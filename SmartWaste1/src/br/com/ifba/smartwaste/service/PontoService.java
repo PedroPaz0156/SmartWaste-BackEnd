@@ -17,11 +17,24 @@ import java.util.ArrayList;
 public class PontoService implements IPontoService{
 
     private final PontoDAO pontoDAO = new PontoDAO();
-    private Ponto ponto;
+    private Ponto ponto = new Ponto();
     private final LixeiraService lixeiraService = new LixeiraService();
     
     @Override
     public void cadastrarPonto(Ponto ponto) {
+        ArrayList <Ponto> p = pontoDAO.findAll();
+        int i = 0;
+        boolean existe = true;        
+        while(existe){
+            i++;
+            existe = false;
+            for (int j = 0; j < p.size(); j++){
+                if (i == p.get(j).getIdPonto()){
+                   existe = true;
+                }
+            }
+        }
+        ponto.setIdPonto(i);
         pontoDAO.criarPonto(ponto);
         lixeiraService.cadastrarLixeira(this.ponto.getMetal());
         lixeiraService.cadastrarLixeira(this.ponto.getOrganico());
@@ -41,7 +54,6 @@ public class PontoService implements IPontoService{
         this.ponto = pontoDAO.procurarPonto(id);
         apagarPonto(ponto);
     }
-    
     
     @Override
     public void apagarPonto(Ponto p){
@@ -106,6 +118,7 @@ public class PontoService implements IPontoService{
         
         ArrayList <Ponto> listaPontos = pontoDAO.findAll();
         ArrayList<Lixeira> listaLixo;
+        
         for (int i = 0; i < listaPontos.size(); i++){
             listaLixo = lixeiraService.findByIdPonto(listaPontos.get(i).getIdPonto());
             for(int j = 0; j < listaLixo.size(); j++){

@@ -19,7 +19,7 @@ public class LixeiraDAO implements ILixeiraDAO{
 
     @Override
     public void criarLixeira(Lixeira lixeira) {
-        String sql = "INSERT INTO lixeira (tipo, ocupacao, existe, idponto) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO lixeira (tipo, tamanho, existe, idponto) VALUES (?, ?, ?, ?)";
         
         PreparedStatement pst;
         ResultSet st;
@@ -28,14 +28,14 @@ public class LixeiraDAO implements ILixeiraDAO{
         try{
             pst = Conexao.getConexao().prepareStatement(sql);
             pst.setString(1, lixeira.getTipo());
-            pst.setFloat(2, lixeira.getOcupacao());
+            pst.setFloat(2, lixeira.getTamanho());
             pst.setBoolean(3, lixeira.isReal());
             pst.setInt(4, lixeira.getIdPonto());
             pst.execute();
             st = pst.getGeneratedKeys();
             
             if(st.next()) {
-               lastId = st.getInt("id"); 
+               lastId = st.getInt("idlixeira"); 
             }
             pst.close();
             st.close();
@@ -110,7 +110,7 @@ public class LixeiraDAO implements ILixeiraDAO{
     
     @Override
     public ArrayList<Lixeira> findByIdPonto(int idPonto) {
-        String sql = "SELECT * FROM lixeira WHERE idPonto LIKE ? ORDER BY idPonto,tipo";
+        String sql = "SELECT * FROM lixeira WHERE idponto LIKE ? ORDER BY idponto,tipo";
         
         ArrayList<Lixeira> lista = new ArrayList<>();
         

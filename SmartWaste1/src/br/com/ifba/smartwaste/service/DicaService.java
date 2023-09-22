@@ -22,7 +22,7 @@ public class DicaService implements IServiceDicas{
     public String sortearDica() {
         ArrayList<Dicas> lista = dicaDAO.listar();
         this.numeroTotal = lista.size();
-        int id =(int) (Math.random() % (this.numeroTotal));
+        int id =(int) (Math.random() * (this.numeroTotal -0 ) + 1);
         this.dica = dicaDAO.procurar(id);
         return dica.getDica();
     }

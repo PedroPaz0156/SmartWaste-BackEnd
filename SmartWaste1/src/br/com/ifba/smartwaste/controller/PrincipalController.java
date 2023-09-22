@@ -95,19 +95,19 @@ public class PrincipalController implements ActionListener{
             Ponto ponto = new Ponto();
             ponto.setEndereco(this.telaEdiPonto.getTxtEndereco().getText());
             if(!this.telaEdiPonto.getjCheckNAddMetal().isSelected()){
-                ponto.getMetal().setTamanho((float) (Integer.parseInt(this.telaEdiPonto.getTxtTamanhoMetal().getText())));
-            } 
+                ponto.getMetal().setTamanho(Float.parseFloat(this.telaEdiPonto.getTxtTamanhoMetal().getText()));
+            }
             if(!this.telaEdiPonto.getjCheckNAddOrganico().isSelected()){
-                ponto.getOrganico().setTamanho((float) (Integer.parseInt(this.telaEdiPonto.getTxtTamanhoOrganico().getText())));
+                ponto.getOrganico().setTamanho(Float.parseFloat(this.telaEdiPonto.getTxtTamanhoOrganico().getText()));
             }
             if(!this.telaEdiPonto.getjCheckNAddPapel().isSelected()){
-                ponto.getPapel().setTamanho((float) (Integer.parseInt(this.telaEdiPonto.getTxtTamanhoPapel().getText())));
+                ponto.getPapel().setTamanho(Float.parseFloat(this.telaEdiPonto.getTxtTamanhoPapel().getText()));
             }
             if(!this.telaEdiPonto.getjCheckNAddPlastico().isSelected()){
-                ponto.getPlastico().setTamanho((float) (Integer.parseInt(this.telaEdiPonto.getTxtTamanhoPlastico().getText())));
+                ponto.getPlastico().setTamanho(Float.parseFloat(this.telaEdiPonto.getTxtTamanhoPlastico().getText()));
             }
             if(!this.telaEdiPonto.getjCheckNAddVidro().isSelected()){
-                ponto.getVidro().setTamanho((float) (Integer.parseInt(this.telaEdiPonto.getTxtTamanhoVidro().getText())));
+                ponto.getVidro().setTamanho(Float.parseFloat(this.telaEdiPonto.getTxtTamanhoVidro().getText()));
             }
             pontoService.atualizarPonto(ponto);
             
