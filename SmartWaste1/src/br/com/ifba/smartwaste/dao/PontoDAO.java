@@ -20,7 +20,7 @@ public class PontoDAO implements IPontoDAO{
 
     @Override
     public void criarPonto(Ponto ponto) {
-        String sql = "INSERT * INTO ponto (endereco, ultimacoleta, ocupacaomedia) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO ponto (endereco, ultimacoleta, ocupacaomedia) VALUES (?, ?, ?)";
         //talvez n tenha esse * no INSERT INTO
         PreparedStatement pst;
         ResultSet st;

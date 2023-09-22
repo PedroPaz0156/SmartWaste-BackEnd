@@ -19,7 +19,7 @@ public class DicasDAO implements IDicaDAO{
 
     @Override
     public void inserir(Dicas dica) {
-        String sql = "INSERT * INTO dicas (dica) VALUES (?);";
+        String sql = "INSERT INTO dicas (dica) VALUES (?);";
         
         PreparedStatement pst;
         ResultSet st;

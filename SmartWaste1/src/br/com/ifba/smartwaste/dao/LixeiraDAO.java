@@ -19,7 +19,7 @@ public class LixeiraDAO implements ILixeiraDAO{
 
     @Override
     public void criarLixeira(Lixeira lixeira) {
-        String sql = "INSERT * INTO lixeira (tipo, ocupacao, existe, idponto) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO lixeira (tipo, ocupacao, existe, idponto) VALUES (?, ?, ?, ?)";
         
         PreparedStatement pst;
         ResultSet st;
@@ -46,7 +46,7 @@ public class LixeiraDAO implements ILixeiraDAO{
 
     @Override
     public void atualizarLixeira(Lixeira lixeira) {
-        String sql = "UPDATE ponto SET tipo = ?, ocupacao = ?, existe = ?, idponto WHERE idlixeira = ?";
+        String sql = "UPDATE lixeira SET tipo = ?, ocupacao = ?, existe = ?, idponto WHERE idlixeira = ?";
         PreparedStatement pst;
         try {
             pst = Conexao.getConexao().prepareStatement(sql);
@@ -126,7 +126,7 @@ public class LixeiraDAO implements ILixeiraDAO{
                 Lixeira lixo = new Lixeira();
                 lixo.setIdPonto(Integer.parseInt(rs.getString("idponto")));
                 lixo.setIdLixeira(Integer.parseInt(rs.getString("idlixeira")));
-                lixo.setMedida(Integer.parseInt(rs.getString("medida")));
+                lixo.setMedida(Float.parseFloat(rs.getString("medida")));
                 lixo.setOcupacao(Float.parseFloat(rs.getString("ocupacao")));
                 lixo.setTamanho(Float.parseFloat(rs.getString("tamanho")));
                 lixo.setTipo(rs.getString("tipo"));
