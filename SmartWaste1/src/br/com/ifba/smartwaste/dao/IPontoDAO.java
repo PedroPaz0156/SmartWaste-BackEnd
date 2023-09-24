@@ -12,9 +12,9 @@ import java.util.ArrayList;
  * @author pc
  */
 public interface IPontoDAO {
-    
-    public void criarPonto(Ponto ponto);
-    public void editarPonto(Ponto ponto);
+
+    public boolean criarPonto(Ponto ponto);
+    public boolean editarPonto(Ponto ponto);
     public boolean deletarPonto(Ponto ponto);
     public Ponto procurarPonto(int id);
     public Ponto findByEndereco(String endereco);

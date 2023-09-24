@@ -18,19 +18,31 @@ public class LixeiraService implements ILixeiraService {
     private Lixeira lixeira;
     
     @Override
-    public void cadastrarLixeira(Lixeira lixeira) {
-        lixeiraDAO.criarLixeira(lixeira);
+    public boolean cadastrarLixeira(float tamanho, String tipo, int pontoId) {
+        Lixeira l = new Lixeira(tamanho, tipo, pontoId);
+        return lixeiraDAO.criarLixeira(l);
     }
 
     @Override
-    public void apagarLixeira(int idLixeira) {
-        this.lixeira = lixeiraDAO.pesquisarLixo(idLixeira);
-        lixeiraDAO.deletarLixeira(lixeira);
+    public boolean cadastrarLixeira(Lixeira lixeira) {
+        return lixeiraDAO.criarLixeira(lixeira);
+    }
+    
+    @Override
+    public boolean apagarLixeira(int id) {
+        this.lixeira = lixeiraDAO.pesquisarLixo(id);
+        return lixeiraDAO.deletarLixeira(lixeira);
     }
 
     @Override
-    public void atualizarLixeira(Lixeira lixeira) {
-        lixeiraDAO.atualizarLixeira(lixeira);
+    public boolean atualizarLixeira(int id, float tamanho, String tipo, int pontoId) {
+        Lixeira l = new Lixeira(tamanho, tipo, pontoId);
+        return lixeiraDAO.atualizarLixeira(l);
+    }
+
+    @Override
+    public boolean atualizarLixeira(Lixeira l) {
+        return lixeiraDAO.atualizarLixeira(l);
     }
 
     @Override

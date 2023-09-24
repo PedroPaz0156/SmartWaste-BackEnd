@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class LixeiraDAO implements ILixeiraDAO{
 
     @Override
-    public void criarLixeira(Lixeira lixeira) {
+    public boolean criarLixeira(Lixeira lixeira) {
         String sql = "INSERT INTO lixeira (tipo, tamanho, existe, idponto) VALUES (?, ?, ?, ?)";
         
         PreparedStatement pst;
@@ -39,13 +39,16 @@ public class LixeiraDAO implements ILixeiraDAO{
             }
             pst.close();
             st.close();
+            
+            return true;
         }catch(SQLException ex){
             System.out.println(ex);
+            return false;
         }
     }
 
     @Override
-    public void atualizarLixeira(Lixeira lixeira) {
+    public boolean atualizarLixeira(Lixeira lixeira) {
         String sql = "UPDATE lixeira SET tipo = ?, ocupacao = ?, existe = ?, idponto WHERE idlixeira = ?";
         PreparedStatement pst;
         try {
@@ -58,13 +61,15 @@ public class LixeiraDAO implements ILixeiraDAO{
             pst.execute();
             pst.close();
             
+            return true;
         }catch(SQLException ex) {
             System.out.println(ex);
+            return false;
         }
     }
 
     @Override
-    public void deletarLixeira(Lixeira lixeira) {
+    public boolean deletarLixeira(Lixeira lixeira) {
         String sql = "DELETE FROM lixeira WHERE idlixeira = ?";
         PreparedStatement pst;
         
@@ -73,8 +78,11 @@ public class LixeiraDAO implements ILixeiraDAO{
             pst.setInt(1, lixeira.getIdLixeira());
             pst.execute();
             pst.close();
+            
+            return true;
         }catch(SQLException ex) {
             System.out.println(ex);
+            return false;
         }
     }
 

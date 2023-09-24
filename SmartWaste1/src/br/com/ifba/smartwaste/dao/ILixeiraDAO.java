@@ -13,9 +13,9 @@ import java.util.ArrayList;
  */
 public interface ILixeiraDAO {
     
-    public void criarLixeira(Lixeira lixeira);
-    public void atualizarLixeira(Lixeira lixeira);
-    public void deletarLixeira(Lixeira lixeira);
+    public boolean criarLixeira(Lixeira lixeira);
+    public boolean atualizarLixeira(Lixeira lixeira);
+    public boolean deletarLixeira(Lixeira lixeira);
     public Lixeira pesquisarLixo(int id);
     public ArrayList<Lixeira> findByIdPonto(int idPonto);
 }

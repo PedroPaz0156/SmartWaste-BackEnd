@@ -13,13 +13,11 @@ import java.util.ArrayList;
  */
 public interface IAdminService {
     
-    public boolean cadastrarAdministrador();
-    public void apagarAdministrador(String nome);
-    public void atualizarAdministrador(String nome, String email, String cpf, String senha);
+    public boolean cadastrarAdministrador(String nome, String email, String cpf, String senha);
+    public boolean apagarAdministrador(String email);
+    public boolean atualizarAdministrador(String nome, String email, String cpf, String senha);
     public ArrayList <Administrador> findAll();
-    public void acessarAdmin();
-    public boolean findByName(String name);
-    public boolean findByEmail(String email);
-    public void abrirTelaCadastro();
-    public void voltar();
+    public boolean acessarAdmin(String email, String senha);
+    public Administrador findByName(String name);
+    public Administrador findByEmail(String email);
 }

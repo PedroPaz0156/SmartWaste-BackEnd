@@ -5,7 +5,6 @@
 package br.com.ifba.smartwaste.service;
 
 import br.com.ifba.smartwaste.model.Ponto;
-import br.com.ifba.smartwaste.view.TelaListaPonto2;
 import java.util.ArrayList;
 
 /**
@@ -13,15 +12,13 @@ import java.util.ArrayList;
  * @author Pedro Paz
  */
 public interface IPontoService {
-    
-    public void cadastrarPonto(Ponto ponto);
-    public void apagarPontoByEndereco(String endereco);
-    public void apagarPontoById(int id);
-    public void apagarPonto(Ponto ponto);
-    public void atualizarPonto(Ponto ponto);
+
+    public boolean cadastrarPontoELixo(String endereco, int tamanhoMet, int tamanhoOrg, int tamanhoPap, int tamanhoPla, int tamanhoVid);
+    public boolean cadastrarPontoVazio(String endereco);
+    public boolean apagarPonto(int id);
+    public boolean atualizarPonto(int id, String endereco);
+    public boolean atualizarPontoELixo(int id, String endereco, int tamanhoMet, int tamanhoOrg, int tamanhoPap, int tamanhoPla, int tamanhoVid);
     public Ponto findByEndereco(String endereco);
     public Ponto findById(int id);
     public ArrayList <Ponto> findAll();
-    public void gerarLista(ArrayList <Ponto> lista, TelaListaPonto2 tlp);
-    public void listarPonto(TelaListaPonto2 tlp);
 }

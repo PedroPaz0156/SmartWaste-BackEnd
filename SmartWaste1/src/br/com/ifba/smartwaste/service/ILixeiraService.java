@@ -12,9 +12,11 @@ import java.util.ArrayList;
  * @author Heber
  */
 public interface ILixeiraService {
-    public void cadastrarLixeira(Lixeira lixeira);
-    public void apagarLixeira(int idLixeira);
-    public void atualizarLixeira(Lixeira lixeira);
+    public boolean cadastrarLixeira(float tamanho, String tipo, int pontoId);
+    public boolean cadastrarLixeira(Lixeira l);
+    public boolean apagarLixeira(int id);
+    public boolean atualizarLixeira(int id, float tamanho, String tipo, int pontoId);
+    public boolean atualizarLixeira(Lixeira l);
     public Lixeira findByIdLixeira(int idLixeira);
     public ArrayList<Lixeira> findByIdPonto(int idPonto);
 }

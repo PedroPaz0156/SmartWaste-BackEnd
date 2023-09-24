@@ -7,8 +7,8 @@ package br.com.ifba.smartwaste.service;
 import br.com.ifba.smartwaste.dao.PontoDAO;
 import br.com.ifba.smartwaste.model.Lixeira;
 import br.com.ifba.smartwaste.model.Ponto;
-import br.com.ifba.smartwaste.view.TelaListaPonto2;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -17,57 +17,64 @@ import java.util.ArrayList;
 public class PontoService implements IPontoService{
 
     private final PontoDAO pontoDAO = new PontoDAO();
-    private Ponto ponto = new Ponto();
     private final LixeiraService lixeiraService = new LixeiraService();
     
     @Override
-    public void cadastrarPonto(Ponto ponto) {
-        ArrayList <Ponto> p = pontoDAO.findAll();
-        int i = 0;
-        boolean existe = true;        
-        while(existe){
-            i++;
-            existe = false;
-            for (int j = 0; j < p.size(); j++){
-                if (i == p.get(j).getIdPonto()){
-                   existe = true;
-                }
-            }
-        }
-        ponto.setIdPonto(i);
-        pontoDAO.criarPonto(ponto);
-        lixeiraService.cadastrarLixeira(this.ponto.getMetal());
-        lixeiraService.cadastrarLixeira(this.ponto.getOrganico());
-        lixeiraService.cadastrarLixeira(this.ponto.getPapel());
-        lixeiraService.cadastrarLixeira(this.ponto.getPlastico());
-        lixeiraService.cadastrarLixeira(this.ponto.getVidro());
-    }
-
-    @Override
-    public void apagarPontoByEndereco(String endereco) {
-        this.ponto = pontoDAO.findByEndereco(endereco);
-        apagarPonto(ponto);
+    public boolean cadastrarPontoELixo(String endereco, int tamanhoMet, int tamanhoOrg, int tamanhoPap, int tamanhoPla, int tamanhoVid){
+        Date ultimaColeta = new Date();
+        Ponto p = new Ponto(0, endereco, ultimaColeta, 0, tamanhoMet, tamanhoOrg, tamanhoPap, tamanhoPla, tamanhoVid);
+        boolean r = pontoDAO.criarPonto(p);
+        lixeiraService.cadastrarLixeira(p.getMetal());
+        lixeiraService.cadastrarLixeira(p.getOrganico());
+        lixeiraService.cadastrarLixeira(p.getPapel());
+        lixeiraService.cadastrarLixeira(p.getPlastico());
+        lixeiraService.cadastrarLixeira(p.getVidro());
+        return r;
     }
     
     @Override
-    public void apagarPontoById(int id){
-        this.ponto = pontoDAO.procurarPonto(id);
-        apagarPonto(ponto);
+    public boolean cadastrarPontoVazio(String endereco) {
+        Ponto p = new Ponto();
+        p.setEndereco(endereco);
+        return pontoDAO.criarPonto(p);
     }
     
+    
     @Override
-    public void apagarPonto(Ponto p){
+    public boolean apagarPonto(int id){
+        Ponto p = pontoDAO.procurarPonto(id);
         lixeiraService.apagarLixeira(p.getMetal().getIdLixeira());
         lixeiraService.apagarLixeira(p.getOrganico().getIdLixeira());
         lixeiraService.apagarLixeira(p.getPapel().getIdLixeira());
         lixeiraService.apagarLixeira(p.getPlastico().getIdLixeira());
         lixeiraService.apagarLixeira(p.getVidro().getIdLixeira());
-        pontoDAO.deletarPonto(p);
+        return pontoDAO.deletarPonto(p);
     }
 
     @Override
-    public void atualizarPonto(Ponto ponto) {
-        pontoDAO.editarPonto(ponto);
+    public boolean atualizarPonto(int id, String endereco) {
+        Ponto p = findById(id);
+        p.setEndereco(endereco);
+        return pontoDAO.editarPonto(p);
+    }
+    
+    @Override
+    public boolean atualizarPontoELixo(int id, String endereco, int tamanhoMet, int tamanhoOrg, int tamanhoPap, int tamanhoPla, int tamanhoVid) {
+        Ponto p = findById(id);
+        p.setEndereco(endereco);
+        p.getMetal().setTamanho(tamanhoMet);
+        p.getOrganico().setTamanho(tamanhoOrg);
+        p.getPapel().setTamanho(tamanhoPap);
+        p.getPlastico().setTamanho(tamanhoPla);
+        p.getVidro().setTamanho(tamanhoVid);
+            
+        boolean r = pontoDAO.editarPonto(p);
+        lixeiraService.atualizarLixeira(p.getMetal());
+        lixeiraService.atualizarLixeira(p.getOrganico());
+        lixeiraService.atualizarLixeira(p.getPapel());
+        lixeiraService.atualizarLixeira(p.getPlastico());
+        lixeiraService.atualizarLixeira(p.getVidro());
+        return r;
     }
 
     @Override
@@ -76,11 +83,20 @@ public class PontoService implements IPontoService{
             Ponto p = pontoDAO.findByEndereco(endereco);
             ArrayList<Lixeira> lista;
             lista = lixeiraService.findByIdPonto(p.getIdPonto());
-            p.setMetal(lista.get(0));
-            p.setOrganico(lista.get(1));
-            p.setPapel(lista.get(2));
-            p.setPlastico(lista.get(3));
-            p.setVidro(lista.get(4));
+            for(int i = 0; i < lista.size(); i++){
+                switch (lista.get(i).getTipo()){
+                    case "metal":
+                        p.setMetal(lista.get(i));
+                    case "organico":
+                        p.setOrganico(lista.get(i));
+                    case "papel":
+                        p.setPapel(lista.get(i));
+                    case "plastico":
+                        p.setPlastico(lista.get(i));
+                    case "vidro":
+                        p.setVidro(lista.get(i));
+                }
+            }
             return p;
         }else{
             return null;
@@ -137,22 +153,6 @@ public class PontoService implements IPontoService{
             }
         }
         return listaPontos;
-    }
-    
-    @Override
-    public void gerarLista(ArrayList <Ponto> lista, TelaListaPonto2 tlp){
-        tlp.limpaTabela();
-        for(int i=0;i<lista.size();i++){
-            tlp.adicionaItem
-                           (lista.get(i).getIdPonto(),
-                           lista.get(i).getEndereco(),
-                           lista.get(i).getOcupacaoMedia());
-        }
-    }
-    
-    @Override
-    public void listarPonto(TelaListaPonto2 tlp){
-        gerarLista(findAll(), tlp);
     }
     
 }

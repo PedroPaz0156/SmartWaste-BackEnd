@@ -43,7 +43,7 @@ public class AdminDAO implements IAdminDAO{
     }
 
     @Override
-    public void deletarAdmin(Administrador admin) {
+    public boolean deletarAdmin(Administrador admin) {
         String sql = "DELETE FROM administrador WHERE cpf = ?";
         
         PreparedStatement pst;
@@ -52,14 +52,16 @@ public class AdminDAO implements IAdminDAO{
             pst = Conexao.getConexao().prepareStatement(sql);
             pst.setString(1, admin.getCpf());
             pst.execute();
-            pst.close();                
+            pst.close();
+            return true;
         } catch (SQLException ex) {
             System.out.println(ex);
+            return false;
         }
     }
 
     @Override
-    public void alterarAdmin(Administrador admin) {
+    public boolean alterarAdmin(Administrador admin) {
         String sql = "UPDATE administrador SET nome = ? , email = ?, cpf = ?, senha = md5(?)";
         
         PreparedStatement pst;
@@ -70,9 +72,11 @@ public class AdminDAO implements IAdminDAO{
             pst.setString(3, admin.getCpf());
             pst.setString(4, admin.getSenha());
             pst.execute();
-            pst.close();                
+            pst.close();
+            return true;
         } catch (SQLException ex) {
             System.out.println(ex);
+            return false;
         }
     }
 
@@ -205,7 +209,7 @@ public class AdminDAO implements IAdminDAO{
     }
     
     @Override
-    public void alterarSenha(Administrador admin) {
+    public boolean alterarSenha(Administrador admin) {
         String sql = "UPDATE administrador SET senha = md5(?) WHERE email LIKE ?";
         
         PreparedStatement pst;
@@ -215,8 +219,10 @@ public class AdminDAO implements IAdminDAO{
             pst.setString(2, admin.getEmail());
             pst.execute();
             pst.close();
+            return true;
         }catch(SQLException ex){
             System.out.println(ex);
+            return false;
         }
     }
     

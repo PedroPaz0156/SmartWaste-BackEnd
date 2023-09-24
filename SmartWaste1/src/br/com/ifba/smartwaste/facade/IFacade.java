@@ -10,23 +10,26 @@ package br.com.ifba.smartwaste.facade;
  */
 public interface IFacade {
     
-    public Object login(String email, String senha);
+    public boolean login(String email, String senha);
     public boolean cadastrar(String nome, String email, String cpf, String senha);
-    public boolean mudarSenha(String email, String senha);
-    
+    public boolean editar(String nome, String email, String cpf, String senha);
+    public boolean excluir(String email);
+
     public Object listarPontos();
-    public boolean criarPonto(String endereco);
+    public boolean criarPonto(String endereco, int tamanhoMet, int tamanhoOrg, int tamanhoPap, int tamanhoPla, int tamanhoVid);
+    public boolean criarPontoVazio(String endereco);
     public boolean editPonto(int id, String endereco);
+    public boolean editPontoELixo(int id, String endereco, int tamanhoMet, int tamanhoOrg, int tamanhoPap, int tamanhoPla, int tamanhoVid);    
     public boolean deletPonto(int id);
     
-    public boolean criarLixeira(String tamanho, String tipo, int pontoId);
-    public boolean editLixeira(int id, String tamanho, String tipo, int pontoId);
+    public boolean criarLixeira(float tamanho, String tipo, int pontoId);
+    public boolean editLixeira(int id, float tamanho, String tipo, int pontoId);
     public boolean deleteLixeira(int id);
     
     public boolean criarSensor(int lixoId);
-    public boolean editSensor(int lixoId);
+    public boolean editSensor(int id, int lixoId);
     public boolean deleteSensor(int id);
     
-    public Object buscarDica();
+    public String buscarDica();
     
 }

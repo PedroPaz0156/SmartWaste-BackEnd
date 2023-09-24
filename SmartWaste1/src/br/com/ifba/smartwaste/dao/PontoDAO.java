@@ -19,8 +19,8 @@ import java.util.ArrayList;
 public class PontoDAO implements IPontoDAO{
 
     @Override
-    public void criarPonto(Ponto ponto) {
-        String sql = "INSERT INTO ponto (endereco, ultimacoleta, ocupacaomedia, id) VALUES (?, ?, ?, ?)";
+    public boolean criarPonto(Ponto ponto) {
+        String sql = "INSERT INTO ponto (endereco, ultimacoleta, ocupacaomedia) VALUES (?, ?, ?)";
         PreparedStatement pst;
         ResultSet st;
         int lastId = 0;
@@ -30,8 +30,6 @@ public class PontoDAO implements IPontoDAO{
             pst.setString(1, ponto.getEndereco());
             pst.setDate(2, (Date) ponto.getUltimaColeta());
             pst.setFloat(3, ponto.getOcupacaoMedia());
-            pst.setInt(4, ponto.getIdPonto());
-            //NÂO DEVERIA SER ASSIM MAS DEVE FUNCIONAR
             pst.execute();
             st = pst.getGeneratedKeys();
             
@@ -40,13 +38,15 @@ public class PontoDAO implements IPontoDAO{
             }
             pst.close();
             st.close();
+            return true;
         }catch(SQLException ex){
             System.out.println(ex);
+            return false;
         }
     }
 
     @Override
-    public void editarPonto(Ponto ponto) {
+    public boolean editarPonto(Ponto ponto) {
         String sql = "UPDATE ponto SET endereco = ?, ultimacoleta = ?, ocupacaomedia = ? WHERE id = ?";
         PreparedStatement pst;
         try {
@@ -57,9 +57,10 @@ public class PontoDAO implements IPontoDAO{
             pst.setInt(4, ponto.getIdPonto());
             pst.execute();
             pst.close();
-            
+            return true;
         }catch(SQLException ex) {
             System.out.println(ex);
+            return false;
         }
     }
 
@@ -73,11 +74,11 @@ public class PontoDAO implements IPontoDAO{
             pst.setInt(1, ponto.getIdPonto());
             pst.execute();
             pst.close();
+            return true;
         }catch(SQLException ex) {
             System.out.println(ex);
             return false;
         }
-        return true;
     }
 
     @Override
