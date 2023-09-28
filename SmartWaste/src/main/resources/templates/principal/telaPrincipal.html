@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <!--sei la, configuração de tela talvez??-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--imagem da aba-->
+        <link rel="icon" href="img/logo.png" type="image/x-icon">
+        <link rel="stylesheet" href="style.css">
+        <title>SmartWaste</title>
+        
+        <!--srpit do mapa e dos botões-->
+        <script src= "https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+        <script src="principal.js" defer></script>
+    </head>
+    <body>
+        <!--mapa-->
+        <n1>
+            <div class="mapBox">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3912.0968335409516!2d-41.8638012!3d-11.327632600000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1694468233033!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </n1>
+        <!--botão de abrir menu-->
+        <!--<div class="wrapper" onclick="abrirMenu()">
+            <div class="link_wrapper">
+                <a>Menu</a>
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832">
+                        <path d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z"/>
+                    </svg>
+                </div>
+            </div>
+                
+        </div>-->
+
+        <!--menu com os botões de gerencimaneto-->
+        <div id="menu">
+            <table>
+                <tr><!--tela de Adicionar um novo local-->
+                    <th>
+                        <button onclick="abrirAddPnt()">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="Icone criar">
+                                <path id="Ellipse 13" d="M48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24ZM6 24C6 33.9411 14.0589 42 24 42C33.9411 42 42 33.9411 42 24C42 14.0589 33.9411 6 24 6C14.0589 6 6 14.0589 6 24Z" fill="white"/>
+                                <path id="Vector" d="M24.3693 35.4462L24.3693 13.2923M13.2924 24.3692H35.4462" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                            </g>
+                        </svg>
+                        </button>
+                    </th>
+                    <th>
+                        <a class="animacao">Adicionar local</a>
+                    </th>
+                </tr>
+                <tr><!--tela de Excluir um local-->
+                    <th>
+                        <button onclick="abrirDelPnt()">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="Icone deletar">
+                                <path id="Ellipse 13" d="M48 24C48 37.2548 37.2548 48 24 48C10.7452 48 0 37.2548 0 24C0 10.7452 10.7452 0 24 0C37.2548 0 48 10.7452 48 24ZM6 24C6 33.9411 14.0589 42 24 42C33.9411 42 42 33.9411 42 24C42 14.0589 33.9411 6 24 6C14.0589 6 6 14.0589 6 24Z" fill="white"/>
+                                <path id="Vector" d="M16.5367 32.2018L32.2018 16.5367M16.5367 16.5367L32.2018 32.2018" stroke="white" stroke-width="5" stroke-linecap="round"/>
+                            </g>
+                        </svg>
+                        </button>
+                    </th>
+                    <th>
+                        <a class="animacao">Remover local</a>
+                    </th>
+                </tr>
+                <tr><!--tela de Editar um local existente-->
+                    <th>
+                        <button onclick="abrirEditPnt()">
+                        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="Icone editar">
+                                <rect id="Rectangle 40" width="11.503" height="34.45" transform="matrix(0.883323 0.468764 -0.571673 0.820481 26.3833 0)" fill="white"/>
+                                <path id="Polygon 6" d="M6.2351 28.9429L16.7859 34.5098L5.98641 39.7007L6.2351 28.9429Z" fill="white"/>
+                                <path id="Line 7" d="M48 42.2651C48 42.2651 43.6528 37.7249 36.317 37.7249C28.9811 37.7249 33.5999 48 20.8302 48C8.06051 48 7.24529 42.2651 7.24529 42.2651" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                            </g>
+                        </svg>
+                        </button>
+                    </th>
+                    <th>
+                        <a class="animacao">Editar local</a>
+                    </th>
+                </tr>
+                <tr><!--Abrir tela de gerar relatorio-->
+                    <th>
+                        <button onclick="abrirGerarRelotorio()">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="Icone relat&#195;&#179;rio">
+                                <path id="Rectangle 41" d="M5.18656 42.7081L2.5 44.0102V10C2.5 5.85786 5.85786 2.5 10 2.5H38C42.1421 2.5 45.5 5.85786 45.5 10V43.9294L43.1306 42.728L42 42.1547L40.8694 42.728L35.9914 45.2013L31.0246 42.7211L29.8903 42.1547L28.7631 42.7351L24.0379 45.1685L19.6652 42.7666L18.5489 42.1534L17.3966 42.6959L12.0679 45.2048L7.45037 42.7503L6.32918 42.1543L5.18656 42.7081Z" stroke="white" stroke-width="5"/>
+                                <line id="Line 8" x1="9.75" y1="10.5" x2="37.5" y2="10.5" stroke="white" stroke-width="3"/>
+                                <line id="Line 11" x1="9.75" y1="28.5" x2="37.5" y2="28.5" stroke="white" stroke-width="3"/>
+                                <line id="Line 10" x1="9.75" y1="22.5" x2="37.5" y2="22.5" stroke="white" stroke-width="3"/>
+                                <line id="Line 9" x1="9.75" y1="16.5" x2="37.5" y2="16.5" stroke="white" stroke-width="3"/>
+                            </g>
+                        </svg>
+                        </button>
+                    </th>
+                    <th>
+                        <a class="animacao">Gerar relatorio</a>
+                    </th>
+                </tr>
+                <tr><!--Abrir tela de sair-->
+                    <th>
+                        <button onclick="abrirSair()">
+                            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+                            <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
+                            <svg width="48px" height="48px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" transform="matrix(1, 0, 0, 1, 0, 0)">
+                            
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                            
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                            
+                            <g id="SVGRepo_iconCarrier"> <path d="M14 7.63636L14 4.5C14 4.22386 13.7761 4 13.5 4L4.5 4C4.22386 4 4 4.22386 4 4.5L4 19.5C4 19.7761 4.22386 20 4.5 20L13.5 20C13.7761 20 14 19.7761 14 19.5L14 16.3636" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> <path d="M10 12L21 12M21 12L18.0004 8.5M21 12L18 15.5" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                            
+                            </svg>          
+                          </button>
+                    </th>
+                    <th>
+                        <a class="animacao">Sair</a>
+                    </th>
+                </tr>
+            </table>
+        </div>
+
+        <!--tela de adicionar-->
+        <div id="adicionar" hidden>
+            <div class = "fechar" align=right><a href="javascript:fecharAddPnt();"><img src="img/x.png"></a></div>
+           Adicionar
+       </div>
+       
+       <!--tela de editar-->
+        <div id="editar" hidden>
+            <div class = "fechar" align=right><a href="javascript:fecharEditPnt();"><img src="img/x.png"></a></div>
+        Editar
+        </div>
+
+        <!--tela de remover-->
+        <div id="remover" hidden>
+            <div class = "fechar" align=right><a href="javascript:fecharDelPnt();"><img src="img/x.png"></a></div>
+            Remover
+        </div>
+        
+        <!--tela de Relatorio-->
+        <div id="relatorio" hidden>
+            <div class = "fechar" align=right><a href="javascript:fecharGerarRelatorio();"><img src="img/x.png"></a></div>
+            Relatorio
+        </div>
+        
+        <!--tela de Sair-->
+        <div id="sair" hidden>
+            <div class = "fechar" align=right><a href="javascript:fecharSair();"><img src="img/x.png"></a></div>
+            Sair
+        </div>
+    </body>
+</html>

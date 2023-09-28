@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--link para a imagem de logo, ainda n tem-->
+        <link rel="icon" href="img/logo.png" type="image/x-icon">
+        <title> SmartWaste</title>
+        <link rel="stylesheet" href="style.css">
+        <style>
+            /*configuração especifica dessa pagina*/
+        </style>
+        <script src="login.js" defer></script>
+    </head>
+    <header>
+        <!--barra superiou ou algo desse tipo-->
+    </header>
+    <body>
+        <center>
+        <!--conteudo da tela-->
+            <img src="img/logo.png"> <!--link para imagem da logo-->
+            <form action="/logar" method="POST">
+                <div id="login-form">
+                    <table>
+                        <tr>
+                            <th><label for="cpf">CPF:</label></th>
+                            <th><input type="text" id="cpf" name="cpf" required></th>
+                        </tr>
+                        <tr>
+                            <th><label for="senha">SENHA:</label></th>
+                            <th><input type="password" id="senha" name="senha" required></th>
+                        </tr>
+                    </table>
+                    <button type="submit">Login</a> </button> 
+
+                    <p id="erro"></p>
+                </div>
+            </form>
+            <a th:href="@{/telaCadastro.html}" class="btn btn-primary">Ainda não possuo uma conta.</a>
+           
+        </center>
+    </body>
+</html>

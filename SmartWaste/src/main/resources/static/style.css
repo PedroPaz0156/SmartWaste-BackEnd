@@ -1,0 +1,224 @@
+html{/*muda o arquivo inteiro*/
+    font-weight: bolder; /*negrito*/
+    background-color: #4da660;/*cor de fundo*/
+    font-size: large; /*letras um pouco maiores*/
+}
+div{ /*configuração padrão de blocos sem identificação*/
+    background-color: #f6f6f6;/*fundo branco*/
+    width: fit-content; /*tamanho auto ajustavel a quantidade de itens*/
+    padding: 10px; /*distancia dos itens até a borda*/
+    border-radius: 20px; /*canto arredondado*/
+}
+#menu{ /*configuração do menu */
+    z-index: 2;/*sobrepor a tela*/
+    background-color: #447C50;/*fundo do menu*/
+}
+
+#menu svg{color: #d9d9d9;/*cor dos icones do menu brancos*/}
+
+input{/*configuração dos objetos de digitação*/
+    background-color: #d8d8d8;/*cor*/
+    border: 0px;/*sem borda*/
+    border-radius: 5px;/*canto arredondado*/
+    padding: 5px;/*espaço ao redor do texto*/
+    width: fit-content;/*tamanho auto ajustavel*/
+}
+label {font-weight: bold;}/*negrito no label de entrada de texto*/
+
+button{/*configuração geral para todos os botões*/
+    border: 0px; /*sem borda*/
+    background-color: #4da660; /*cor do botão*/
+    padding: 2px; /*espaço entre o texto e o limite do botão*/
+    padding-left: 5px;/*mesmo espaço do q a esquerda*/
+    padding-right: 5px;/*mesmo espaço so que a direita*/
+    border-radius: 15px;/*canto arredondado*/
+    color: #f6f6f6;/*texto branco*/
+    font-size: larger;/*letras maiores*/
+    font-weight: bolder;/*negrito mais negrito*/
+}
+button:hover{/*quando o mouse passa pelo botão*/
+    border: 1px;/*faz uma bordinha fina*/
+    background-color: #5db670;/*muda um pouco a cor*/
+}
+
+#erro{/*configuração da mensagem de erro ao realizar login ou cadastro*/
+    color:red;/*letra vermelha*/
+    font-weight: lighter;/*letra fina*/
+}
+
+*{/*por favor alguem explica isso*/
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+.n1{ /*esse é o objeto que está o mapa mas eu n sei o q ele faz*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #4da660;
+}
+
+.mapBox{/*configurações do div que contem o mapa*/
+    position: center;/*centraliza dentro do N1*/
+    width: 100px;/*tamanho*/
+    height: 100px;
+    background-color: #4da660;/*cor de fundo, so aparece enquanto o mapa está carregando*/
+}
+
+.mapBox iframe{/*iframe dentro do mapBox, a tela que tem o mapa*/
+    width: 1339px;/*largura*/
+    height: 630px;/*altura*/
+}
+
+.custom-map-control-button { /*não sei alguem explica esse tbm*/
+    background-color: #fff;
+    border: 0;
+    border-radius: 2px;
+    box-shadow: 2px;
+    margin: 10px;
+    padding: 0 0.5em;
+    font: 400 18px Roboto, Arial, sans-serif;
+    overflow: hidden;
+    height: 40px;
+    cursor: pointer;
+}
+
+.custom-map-control-button:hover {
+    background: rgb(235,235,235);
+}
+
+body{/*a parte de conteudos da pagina*/
+    font-family: 'Lato', sans-serif; /*fonte*/
+}
+  
+.wrapper{ /*tem que explicar isso tbm*/
+    position: fixed;
+    top: 90%;
+    left: 12%;
+    transform: translate(-50%, -50%);
+}
+  
+.link_wrapper{ /*e esse*/
+    position: relative;
+}
+  
+.animacao{
+    display: block;
+    width: 150px;
+    height: 33px;
+    line-height: 30px;
+    font-weight: bold;
+    color: #4da660; 
+  /* text-decoration: none;
+    background: #4da660;
+    text-align: center;
+    
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 3px solid #4da660;
+    transition: all .35s;*/
+}
+  
+
+.icon{
+    width: 50px;
+    height: 50px;
+    border: 3px solid transparent;
+    position: absolute;
+    transform: rotate(45deg);
+    right: 0;
+    top: 0;
+    z-index: -1;
+    transition: all .35s;
+}
+  
+.icon svg{
+    width: 30px;
+    position: absolute;
+    top: calc(50% - 15px);
+    left: calc(50% - 15px);
+    transform: rotate(-45deg);
+    fill: #2ecc71;
+    transition: all .35s;
+}
+  
+/*a:hover{
+    width: 200px;
+    border: 3px solid #2ecc71;
+    background: transparent;
+    color: #2ecc71;
+}
+  
+a:hover + .icon{
+    border: 3px solid #2ecc71;
+    right: -25%;
+}*/
+
+#adicionar {
+    position: absolute; 
+    left: 15%;
+    top: 50%;
+    width: 300px; 
+    height: 250px; 
+    margin-left: -150px;
+    margin-top: -125px;
+    background-color: #03862a;
+    color: #FFF; 
+    text-align: center; 
+    z-index: 1000; 
+}
+#editar {
+    position: absolute; 
+    left: 15%;
+    top: 50%;
+    width: 300px; 
+    height: 250px; 
+    margin-left: -150px;
+    margin-top: -125px;
+    background-color: #03862a;
+    color: #FFF; 
+    text-align: center; 
+    z-index: 1000; 
+}
+#remover {
+    position: absolute; 
+    left: 15%;
+    top: 50%;
+    width: 300px; 
+    height: 250px; 
+    margin-left: -150px;
+    margin-top: -125px;
+    background-color: #03862a;
+    color: #FFF; 
+    text-align: center; 
+    z-index: 1000; 
+}
+#relatorio {
+    position: absolute; 
+    left: 15%;
+    top: 50%;
+    width: 300px; 
+    height: 250px; 
+    margin-left: -150px;
+    margin-top: -125px;
+    background-color: #03862a;
+    color: #FFF; 
+    text-align: center; 
+    z-index: 1000; 
+}
+#sair {
+    position: absolute; 
+    left: 15%;
+    top: 50%;
+    width: 300px; 
+    height: 250px; 
+    margin-left: -150px;
+    margin-top: -125px;
+    background-color: #03862a;
+    color: #FFF; 
+    text-align: center; 
+    z-index: 1000; 
+}
+.fechar { margin: 5px; font-size: 12px; }
