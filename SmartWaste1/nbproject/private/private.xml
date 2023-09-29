@@ -7,6 +7,10 @@
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/SmartWaste1/src/br/com/ifba/smartwaste/dao/IDicaDAO.java</file>
             <file>file:/C:/Users/pc/Documents/NetBeansProjects/SmartWaste1/src/br/com/ifba/smartwaste/service/ServiceDica.java</file>
         </group>
-        <group/>
+        <group>
+            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/service/AdminService.java</file>
+            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/facade/IFacade.java</file>
+            <file>file:/C:/Users/Heber/Documents/GitHub/SmartWaste-BackEnd/SmartWaste1/src/br/com/ifba/smartwaste/facade/Facade.java</file>
+        </group>
     </open-files>
 </project-private>
